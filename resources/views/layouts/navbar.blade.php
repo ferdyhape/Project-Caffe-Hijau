@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <h2>Sixteen <em>Clothing</em></h2>
+                <h2>Caffe <em>Coklat</em></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,19 +11,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item {{ ($title === "Home" ? 'active' : '' ) }}">
+                    <li class="nav-item {{ ($title === 'Home' ? 'active' : '' ) }}">
                         <a class="nav-link" href="/">Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($title === "Products" ? 'active' : '' ) }}" href="/product">Our
+                        <a class="nav-link {{ ($title === 'Products' ? 'active' : '' ) }}" href="/product">Our
                             Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($title === "About" ? 'active' : '' ) }}" href="/about">About Us</a>
+                        <a class="nav-link {{ ($title === 'About Us' ? 'active' : '' ) }}" href="/about">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($title === "Contact" ? 'active' : '' ) }}" href="/contact">Contact
+                        <a class="nav-link {{ ($title === 'Contact' ? 'active' : '' ) }}" href="/contact">Contact
                             Us</a>
                     </li>
                     <li class="nav-item">
