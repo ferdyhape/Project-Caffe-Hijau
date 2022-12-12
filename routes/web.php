@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\GeneralPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\item;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +17,17 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/about', function () {
-    return view('about', [
-        'title' => 'About'
-    ]);
-})->middleware('auth');;
-Route::get('/contact', function () {
-    return view('contact', [
-        'title' => 'Contact'
+
+Route::get('/tes', function () {
+    return view('tes', [
+        'title' => 'Home',
+        'item' => item::all(),
     ]);
 })->middleware('auth');
-Route::get('/product', function () {
-    return view('product', [
-        'title' => 'Products'
-    ]);
-})->middleware('auth');
-Route::get('/', function () {
-    return view('index', [
-        'title' => 'Home'
-    ]);
-})->middleware('auth');
+Route::get('/', [GeneralPageController::class, 'index'])->name('index')->middleware('auth');
+Route::get('/about', [GeneralPageController::class, 'about'])->name('about')->middleware('auth');
+Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact')->middleware('auth');
+Route::get('/product', [GeneralPageController::class, 'product'])->name('product')->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
