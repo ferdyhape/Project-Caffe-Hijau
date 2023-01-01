@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\GeneralPageController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Models\item;
 
@@ -29,10 +29,7 @@ Route::get('/about', [GeneralPageController::class, 'about'])->name('about')->mi
 Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact')->middleware('auth');
 Route::get('/product', [GeneralPageController::class, 'product'])->name('product')->middleware('auth');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
-
-// register
-Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/auth', [AuthController::class, 'index'])->name('auth')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/register', [AuthController::class, 'store']);
+Route::post('/logout', [AuthController::class, 'logout']);

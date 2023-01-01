@@ -11,13 +11,13 @@
 
     @include('layouts.preload')
 
-    @if (!Route::is('login', 'register'))
+    @if (!Route::is('auth'))
     @include('layouts.navbar')
     @endif
 
     @yield('content')
 
-    @if (!Route::is('login', 'register'))
+    @if (!Route::is('auth'))
     @include('layouts.footer')
     @endif
 
