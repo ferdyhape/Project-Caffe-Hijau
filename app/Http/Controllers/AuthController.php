@@ -48,9 +48,9 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255',
-            'level' => 'required'
         ]);
 
+        $validatedData['level'] = 'user';
         $validatedData['password'] = Hash::make($validatedData['password']);
         User::create($validatedData);
         // dd($validatedData);

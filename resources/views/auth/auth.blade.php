@@ -84,7 +84,6 @@
 						</div>
 						<form method="POST" action="/register" class="signin-form">
 							@csrf
-							<input type="hidden" id="level" name="level" value="user">
 							<div class="form-group mt-3">
 								<input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
 									required placeholder="Name">
