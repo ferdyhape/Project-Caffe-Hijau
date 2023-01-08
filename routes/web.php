@@ -3,7 +3,6 @@
 use App\Http\Controllers\GeneralPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\RegisterController;
 use App\Models\item;
 
 /*
@@ -26,7 +25,7 @@ Route::get('/tes', function () {
 })->middleware('auth');
 Route::get('/', [GeneralPageController::class, 'index'])->name('index')->middleware('auth');
 Route::get('/about', [GeneralPageController::class, 'about'])->name('about')->middleware('auth');
-Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact')->middleware('auth');
+Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact')->middleware('auth', 'admin');
 Route::get('/product', [GeneralPageController::class, 'product'])->name('product')->middleware('auth');
 
 Route::get('/auth', [AuthController::class, 'index'])->name('auth')->middleware('guest');
