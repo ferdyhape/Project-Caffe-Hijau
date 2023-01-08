@@ -26,6 +26,25 @@
                         <a class="nav-link {{ ($title === 'Contact' ? 'active' : '' ) }}" href="/contact">Contact
                             Us</a>
                     </li>
+                    @if (auth()->user()->level == 'admin')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Dashboard Admin</a></li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <a>Logout</a>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    @else
                     <li class="nav-item">
                         <form action="/logout" method="POST">
                             @csrf
@@ -34,6 +53,7 @@
                             </button>
                         </form>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
