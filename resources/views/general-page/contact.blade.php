@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('general-page.layouts.main')
 @section('content')
 <!-- Page Content -->
 <div class="page-heading contact-heading header-text">

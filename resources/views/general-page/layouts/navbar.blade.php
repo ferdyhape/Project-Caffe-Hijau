@@ -33,7 +33,7 @@
                             {{auth()->user()->name}}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Dashboard Admin</a></li>
+                            <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard Admin</a></li>
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf
