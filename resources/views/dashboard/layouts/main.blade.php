@@ -7,7 +7,8 @@
 
 </head>
 
-@if ( in_array(Route::current()->getName(), array('dashboardlogin', 'dashboardregister', 'dashboardforgorpassword'),
+@if ( in_array(Route::current()->getName(), array('dashboardlogin', 'dashboardregister', 'dashboardforgorpassword',
+'login', 'register'),
 true) ) {
 
 @yield('content')
@@ -25,11 +26,9 @@ true) ) {
                 <div id="content">
                     @yield('content')
                 </div>
-
                 @include('dashboard.layouts.footer')
                 @include('dashboard.layouts.scroll-to-top')
                 @include('dashboard.layouts.logout-modal')
-
             </div>
         </div>
     </div>
