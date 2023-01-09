@@ -10,10 +10,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
-        return view('auth.auth', [
-            "title" => "Auth User"
+        return view('auth.login', [
+            'title' => 'Login Page',
+        ]);
+    }
+    public function register()
+    {
+        return view('auth.register', [
+            'title' => 'Register Page',
         ]);
     }
     public function authenticate(Request $request)
@@ -46,8 +52,8 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255',
+            'email' => 'required|email:dns,rfc|unique:users',
+            'password' => 'required|confirmed|min:6|max:255',
         ]);
 
         $validatedData['level'] = 'user';
@@ -57,6 +63,6 @@ class AuthController extends Controller
 
         $request->session()->flash('success', 'Registration is successful, please login');
 
-        return redirect('/auth');
+        return redirect('/login');
     }
 }
