@@ -38,7 +38,7 @@
       @foreach ($item as $i)
       <div class="col-md-4">
         <div class="product-item">
-          <a href="#"><img src="assets/images/product-images/{{ $i->picture }}" alt=""></a>
+          <a href="#"><img src="{{ URL::asset('assets/images/product-images/' .$i->picture) }}" alt=""></a>
           <div class="down-content">
             <a href="#">
               <h4>{{ $i->name }}</h4>
@@ -89,7 +89,7 @@
       </div>
       <div class="col-md-6">
         <div class="right-image">
-          <img src="assets/images/feature-image.jpg" alt="">
+          <img src="{{ URL::asset('assets/images/feature-image.jpg')}}" alt="">
         </div>
       </div>
     </div>
