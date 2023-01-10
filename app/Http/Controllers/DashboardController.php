@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\item;
+use App\Models\item_category;
+
 class DashboardController extends Controller
 {
     public function index()
     {
         return view('dashboard.index', [
             "title" => "Dashboard"
+        ]);
+    }
+    public function item()
+    {
+        return view('dashboard.item', [
+            "title" => "Item Management",
+            'item' => item::all(),
         ]);
     }
     public function table()
