@@ -18,6 +18,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('dashboard/item') }}">
+            <i class="fas fa-fw fa-shop"></i>
+            <span>Item</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
