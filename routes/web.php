@@ -44,6 +44,7 @@ Route::middleware('guest')->group(function () {
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/table', [DashboardController::class, 'table'])->name('tabledashboard');
+    Route::get('/item', [DashboardController::class, 'item'])->name('itemdashboard');
     Route::get('/utilities-color', [DashboardController::class, 'utilities_color']);
     Route::get('/utilities-border', [DashboardController::class, 'utilities_border']);
     Route::get('/utilities-animation', [DashboardController::class, 'utilities_animation']);
