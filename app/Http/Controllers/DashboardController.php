@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\item;
 use App\Models\item_category;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         return view('dashboard.index', [
-            "title" => "Dashboard"
-        ]);
-    }
-    public function item()
-    {
-        return view('dashboard.item', [
-            "title" => "Item Management",
-            'item' => item::all(),
+            "title" => "Dashboard",
+            "itemCount" => item::all()->count(),
+            "categoryCount" => item_category::all()->count(),
         ]);
     }
     public function table()
