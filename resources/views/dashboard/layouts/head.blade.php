@@ -16,5 +16,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ URL::asset('assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css'); }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/bootstrap-5.0.2-dist/css/bootstrap.min.css'); }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/dashboard/css/sb-admin-2.min.css'); }}" rel="stylesheet">
+
 </head>
