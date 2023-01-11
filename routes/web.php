@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\GeneralPageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GeneralPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ItemController;
 use App\Models\item;
 
 /*
@@ -44,7 +45,6 @@ Route::middleware('guest')->group(function () {
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/table', [DashboardController::class, 'table'])->name('tabledashboard');
-    Route::get('/item', [DashboardController::class, 'item'])->name('itemdashboard');
     Route::get('/utilities-color', [DashboardController::class, 'utilities_color']);
     Route::get('/utilities-border', [DashboardController::class, 'utilities_border']);
     Route::get('/utilities-animation', [DashboardController::class, 'utilities_animation']);
@@ -58,3 +58,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/register', [DashboardController::class, 'register'])->name('dashboardregister');
     Route::get('/forgot-password', [DashboardController::class, 'forgot_password'])->name('dashboardforgorpassword');
 });
+
+
+Route::resource('/dashboard/item', ItemController::class)->middleware('auth', 'admin');
