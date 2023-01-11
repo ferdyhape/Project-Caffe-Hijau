@@ -21,5 +21,8 @@ class ItemCategorySeeder extends Seeder
         item_category::create([
             'name' => 'Tea',
         ]);
+        item_category::create([
+            'name' => 'Angkringannese',
+        ]);
     }
 }
