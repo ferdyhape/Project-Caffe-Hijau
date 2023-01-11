@@ -79,6 +79,7 @@ class ItemController extends Controller
     public function edit(item $item)
     {
         return view('dashboard.item.edit', [
+            'title' => 'Edit Item',
             'item' => $item,
             'category' => item_category::all(),
         ]);
