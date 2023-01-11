@@ -20,8 +20,13 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ url('dashboard/item') }}">
-            <i class="fas fa-fw fa-shop"></i>
-            <span>Item</span></a>
+            <i class="fas fa-fw fa-mug-saucer"></i>
+            <span>Items</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('dashboard/category') }}">
+            <i class="fas fa-fw fa-tags"></i>
+            <span>Categories</span></a>
     </li>
 
     <!-- Divider -->
