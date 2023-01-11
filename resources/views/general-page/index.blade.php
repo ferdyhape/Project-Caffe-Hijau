@@ -38,7 +38,7 @@
       @foreach ($item as $i)
       <div class="col-md-4">
         <div class="product-item">
-          <a href="#"><img src="{{ URL::asset('assets/images/product-images/' .$i->picture) }}" alt=""></a>
+          <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
           <div class="down-content">
             <a href="#">
               <h4>{{ $i->name }}</h4>
