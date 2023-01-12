@@ -35,11 +35,34 @@
                         <tr>
                             <td>{{ $i->name }}</td>
                             <td>{{ $i->price }}</td>
+                            {{-- if category not connected --}}
+                            @if (is_null($i->item_category))
+                            <td>
+                                <p>[Category not selected]<br><strong><a href="item/{{ $i->id }}/edit">Select
+                                            Category</a></strong></p>
+                            </td>
+                            @else
                             <td>{{ $i->item_category->name }}</td>
+                            @endif
+
+                            {{-- if description is null --}}
+                            @if (is_null($i->description))
+                            <td>
+                                <p>[No description]<br><strong><a href="item/{{ $i->id }}/edit">Add
+                                            Description</a></strong></p>
+                            </td>
+                            @else
                             <td>{{ $i->description }}</td>
+                            @endif
+
+                            {{-- if image not included --}}
+                            @if (is_null($i->picture))
+                            <td>Image not included</td>
+                            @else
                             <td class="text-center">
                                 <img src="{{ asset('storage/'. $i->picture) }}" alt="item-image" width="150">
                             </td>
+                            @endif
                             <td class="d-flex justify-content-around">
                                 <a href="item/{{ $i->id }}" class="badge bg-success text-white p-2 mx-2"><i
                                         class="fas fa-fw fa-eye" style="font-size: 18px;"></i></a>

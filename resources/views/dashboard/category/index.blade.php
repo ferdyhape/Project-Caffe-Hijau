@@ -27,8 +27,15 @@
                     <tbody>
                         @foreach ($category as $c)
                         <tr>
-                            <td>{{ $c->name }}</td>
+                            <td>{{ $c->name }}</td>{{-- if description is null --}}
+                            @if (is_null($c->description))
+                            <td>
+                                <p>[No description]<br><strong><a href="category/{{ $c->id }}/edit">Add
+                                            Description</a></strong></p>
+                            </td>
+                            @else
                             <td>{{ $c->description }}</td>
+                            @endif
                             <td class="d-flex justify-content-around">
                                 <a href="category/{{ $c->id }}" class="badge bg-success text-white p-2 mx-2"><i
                                         class="fas fa-fw fa-eye" style="font-size: 18px;"></i></a>
