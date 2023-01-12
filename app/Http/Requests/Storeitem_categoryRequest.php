@@ -28,4 +28,10 @@ class Storeitem_categoryRequest extends FormRequest
             'description' => 'max:255',
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.max' => 'Name must be under :max character(Alphabet/Symbol/Space/Number)',
+        ];
+    }
 }

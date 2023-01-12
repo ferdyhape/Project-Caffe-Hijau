@@ -27,8 +27,15 @@ class UpdateitemRequest extends FormRequest
             'name' => 'required|max:20',
             'price' => 'required|integer',
             'category_id' => 'required|integer',
-            'description' => 'max:255',
+            'description' => 'max:100',
             'picture' => 'mimes:png,jpg,jpeg|max:2048',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.max' => 'Name must be under :max character(Alphabet/Symbol/Space/Number)',
+            'category_id.integer' => 'You must choose a valid category',
         ];
     }
 }

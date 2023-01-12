@@ -31,4 +31,11 @@ class StoreitemRequest extends FormRequest
             'picture' => 'mimes:png,jpg,jpeg|max:2048',
         ];
     }
+    public function messages()
+    {
+        return [
+            'name.max' => 'Name must be under :max character(Alphabet/Symbol/Space/Number)',
+            'category_id.integer' => 'You must choose a valid category',
+        ];
+    }
 }
