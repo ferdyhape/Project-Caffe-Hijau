@@ -13,7 +13,7 @@ class Updateitem_categoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class Updateitem_categoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:50',
+            'description' => 'max:255',
         ];
     }
 }
