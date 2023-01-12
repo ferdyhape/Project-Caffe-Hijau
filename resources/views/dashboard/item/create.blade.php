@@ -10,27 +10,59 @@
                 <form action="{{ url('dashboard/item') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" name="name" placeholder="Item Name"
-                            autofocus>
+                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"
+                            name="name" placeholder="Item Name" required autofocus>
+                        @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-user" name="price" placeholder="Price">
+                        <input type="number" class="form-control form-control-user @error('price') is-invalid @enderror"
+                            name="price" placeholder="Price" required>
+                        @error('price')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" name="description"
-                            placeholder="Description">
+                        <input type="text"
+                            class="form-control form-control-user @error('description') is-invalid @enderror"
+                            name="description" placeholder="Description" required>
+                        @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
                     </div>
                     <div class="form-group">
-                        <select class="form-control" id="category_id" name="category_id">
+                        <select class="form-control @error('Category') is-invalid @enderror" id="category_id"
+                            name="category_id" required>
                             <option>Category</option>
                             @foreach($category as $c)
                             <option value="{{ $c->id }}">{{ $c->name }}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="input-group">
                         <label class="input-group-text" for="picture">Picture</label>
-                        <input type="file" class="form-control" id="picture" name="picture" onchange="previewImage()">
+                        <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture"
+                            name="picture" onchange="previewImage()">
+                        @error('picture')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
                     </div>
                     <img class="img-preview img-fluid mt-1" id="img-preview">
                     <button type="submit" class="btn btn-primary btn-user btn-block mt-3">Add Item</button>

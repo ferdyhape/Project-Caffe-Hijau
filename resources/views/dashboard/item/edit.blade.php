@@ -5,7 +5,7 @@
 <div class="container row justify-content-center">
     <div class="col-lg-6 mt-2 mb-4">
         <div class="card border-0 shadow-sm">
-            <h5 class="card-header text-center text-uppercase">Add New Item</h5>
+            <h5 class="card-header text-center text-uppercase">Edit Item <strong>[{{ $item->name }}]</strong></h5>
             <div class="card-body p-5">
                 <form action="{{ url('dashboard/item/'.$item->id) }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
@@ -13,16 +13,32 @@
                     <img src="{{ asset('storage/'. $item->picture) }}" class="card-img-top mb-4" alt="item-image">
                     <input type="hidden" name="oldPicture" value="{{ $item->picture }}"><br>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" name="name" placeholder="Item Name"
-                            value="{{ $item->name }}" autofocus>
+                        <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"
+                            name="name" placeholder="Item Name" value="{{ $item->name }}" autofocus>
+                        @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-user" name="price" placeholder="Price"
-                            value="{{ $item->price }}">
+                        <input type="number" class="form-control form-control-user @error('price') is-invalid @enderror"
+                            name="price" placeholder="Price" value="{{ $item->price }}">
+                        @error('price')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" name="description"
-                            placeholder="Description" value="{{ $item->description }}">
+                        <input type="text"
+                            class="form-control form-control-user @error('description') is-invalid @enderror"
+                            name="description" placeholder="Description" value="{{ $item->description }}">
+                        @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <select class="form-control" id="category_id" name="category_id">
@@ -38,7 +54,13 @@
                     @if (is_null($item->picture))
                     <div class="input-group">
                         <label class="input-group-text" for="picture">Picture</label>
-                        <input type="file" class="form-control" id="picture" name="picture" onchange="previewImage()">
+                        <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture"
+                            name="picture" onchange="previewImage()">
+                        @error('picture')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     <img class="img-preview img-fluid mt-1" id="img-preview">
 
@@ -60,7 +82,7 @@
                     </div>
                     @endif
 
-                    <button type="submit" class="btn btn-primary btn-user btn-block mt-2">Add Item</button>
+                    <button type="submit" class="btn btn-primary btn-user btn-block mt-2">Edit Item</button>
                 </form>
             </div>
         </div>

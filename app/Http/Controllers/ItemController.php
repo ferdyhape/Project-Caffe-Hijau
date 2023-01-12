@@ -103,8 +103,10 @@ class ItemController extends Controller
             }
             $name_picture_path = $request->file('picture')->store('item-picture', 'public');
             $UpdateItem['picture'] = $name_picture_path;
+        } else {
+            $UpdateItem['picture'] = $request->oldPicture;
         }
-
+        // dd($UpdateItem);
         $findItem = item::find($id);
         $findItem->name = $UpdateItem['name'];
         $findItem->price = $UpdateItem['price'];
