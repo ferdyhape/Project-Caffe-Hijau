@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GeneralPageController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ItemController;
 use App\Models\item;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GeneralPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/login', [DashboardController::class, 'login'])->name('dashboardlogin');
     Route::get('/register', [DashboardController::class, 'register'])->name('dashboardregister');
     Route::get('/forgot-password', [DashboardController::class, 'forgot_password'])->name('dashboardforgorpassword');
+    Route::resource('/item', ItemController::class);
+    Route::resource('/category', CategoryController::class);
 });
-
-
-Route::resource('/dashboard/item', ItemController::class)->middleware('auth', 'admin');
