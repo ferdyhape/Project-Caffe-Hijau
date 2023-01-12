@@ -14,7 +14,7 @@
                     <input type="hidden" name="oldPicture" value="{{ $item->picture }}"><br>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"
-                            name="name" placeholder="Item Name" value="{{ $item->name }}" autofocus>
+                            name="name" placeholder="Item Name" value="{{ $item->name }}" required autofocus>
                         @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <input type="number" class="form-control form-control-user @error('price') is-invalid @enderror"
-                            name="price" placeholder="Price" value="{{ $item->price }}">
+                            name="price" placeholder="Price" value="{{ $item->price }}" required>
                         @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
