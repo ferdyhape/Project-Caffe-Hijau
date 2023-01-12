@@ -17,12 +17,15 @@ class ItemCategorySeeder extends Seeder
     {
         item_category::create([
             'name' => 'Coffe',
+            'description' => 'Commodo proident et elit nulla ut ea.'
         ]);
         item_category::create([
             'name' => 'Tea',
+            'description' => 'Dolor fugiat voluptate consequat veniam anim sunt deserunt velit velit.'
         ]);
         item_category::create([
             'name' => 'Angkringannese',
+            'description' => 'Sint ullamco nisi velit veniam sunt sint consequat cupidatat.'
         ]);
     }
 }
