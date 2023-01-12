@@ -12,6 +12,7 @@ class item_category extends Model
 
     protected $fillable = [
         'name',
+        'description',
     ];
 
     protected $guarded = ['id'];
