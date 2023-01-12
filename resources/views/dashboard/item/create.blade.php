@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <input type="text"
                             class="form-control form-control-user @error('description') is-invalid @enderror"
-                            name="description" placeholder="Description" required>
+                            name="description" placeholder="Description">
                         @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}

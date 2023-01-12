@@ -41,7 +41,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <select class="form-control" id="category_id" name="category_id">
+                        <select class="form-control @error('category_id') is-invalid @enderror" id="category_id"
+                            name="category_id">
+                            @if(is_null($item->item_category))
+                            <option selected class="text-danger">Select categories</option>
+                            @endif
                             @foreach($category as $c)
                             @if( $item->category_id == $c->id)
                             <option value="{{ $c->id }}" selected>{{ $c->name }}</option>
@@ -50,6 +54,11 @@
                             @endif
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                     @if (is_null($item->picture))
                     <div class="input-group">
