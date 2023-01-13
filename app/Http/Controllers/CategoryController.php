@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.category.index', [
+        return view('admin-side.dashboard.category.index', [
             "title" => "Category Management",
             'category' => item_category::all(),
         ]);
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.category.create', [
+        return view('admin-side.dashboard.category.create', [
             "title" => "Add Category",
         ]);
     }
@@ -69,7 +69,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $findCategory = item_category::find($id);
-        return view('dashboard.category.edit', [
+        return view('admin-side.dashboard.category.edit', [
             'title' => 'Edit Category',
             'category' => $findCategory,
         ]);

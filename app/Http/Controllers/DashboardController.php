@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index', [
+        return view('admin-side.dashboard.index', [
             "title" => "Dashboard",
             "itemCount" => item::all()->count(),
             "categoryCount" => item_category::all()->count(),
@@ -19,79 +19,79 @@ class DashboardController extends Controller
     }
     public function table()
     {
-        return view('dashboard.tables', [
+        return view('admin-side.dashboard.tables', [
             "title" => "Tables"
         ]);
     }
     public function utilities_color()
     {
-        return view('dashboard.utilities-color', [
+        return view('admin-side.dashboard.utilities-color', [
             "title" => "Color"
         ]);
     }
     public function utilities_border()
     {
-        return view('dashboard.utilities-border', [
+        return view('admin-side.dashboard.utilities-border', [
             "title" => "Border"
         ]);
     }
     public function utilities_animation()
     {
-        return view('dashboard.utilities-animation', [
+        return view('admin-side.dashboard.utilities-animation', [
             "title" => "Animation"
         ]);
     }
     public function utilities_other()
     {
-        return view('dashboard.utilities-other', [
+        return view('admin-side.dashboard.utilities-other', [
             "title" => "Other"
         ]);
     }
     public function buttons()
     {
-        return view('dashboard.buttons', [
+        return view('admin-side.dashboard.buttons', [
             "title" => "Buttons"
         ]);
     }
     public function cards()
     {
-        return view('dashboard.cards', [
+        return view('admin-side.dashboard.cards', [
             "title" => "Cards"
         ]);
     }
     public function charts()
     {
-        return view('dashboard.charts', [
+        return view('admin-side.dashboard.charts', [
             "title" => "Charts"
         ]);
     }
     public function error_404()
     {
-        return view('dashboard.404', [
+        return view('admin-side.dashboard.404', [
             "title" => "404"
         ]);
     }
     public function blank()
     {
-        return view('dashboard.blank', [
+        return view('admin-side.dashboard.blank', [
             "title" => "Blank"
         ]);
     }
     public function login()
     {
-        return view('dashboard.login', [
+        return view('admin-side.dashboard.login', [
             "title" => "Login"
         ]);
     }
     public function register()
     {
-        return view('dashboard.register', [
+        return view('admin-side.dashboard.register', [
             "title" => "Register"
         ]);
     }
     public function forgot_password()
     {
-        return view('dashboard.forgot-password', [
+        return view('admin-side.dashboard.forgot-password', [
             "title" => "Forgot Password"
         ]);
     }

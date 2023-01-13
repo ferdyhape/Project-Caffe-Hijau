@@ -11,7 +11,7 @@ class GeneralPageController extends Controller
 {
     public function index()
     {
-        return view('general-page.index', [
+        return view('client-side.index', [
             'title' => 'Home',
             'item' => item::orderBy('created_at', 'desc')->get(),
         ]);
@@ -19,21 +19,21 @@ class GeneralPageController extends Controller
 
     public function about()
     {
-        return view('general-page.about', [
+        return view('client-side.about', [
             'title' => 'About Us'
         ]);
     }
 
     public function contact()
     {
-        return view('general-page.contact', [
+        return view('client-side.contact', [
             'title' => 'Contact'
         ]);
     }
 
     public function product()
     {
-        return view('general-page.product', [
+        return view('client-side.product', [
             'title' => 'Products',
             'category' => item_category::all(),
             // 'item' => item::all(),

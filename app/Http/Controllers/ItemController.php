@@ -19,7 +19,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('dashboard.item.index', [
+        return view('admin-side.dashboard.item.index', [
             "title" => "Item Management",
             'item' => item::all(),
         ]);
@@ -32,7 +32,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('dashboard.item.create', [
+        return view('admin-side.dashboard.item.create', [
             "title" => "Add Item",
             'category' => item_category::all(),
         ]);
@@ -78,7 +78,7 @@ class ItemController extends Controller
      */
     public function edit(item $item)
     {
-        return view('dashboard.item.edit', [
+        return view('admin-side.dashboard.item.edit', [
             'title' => 'Edit Item',
             'item' => $item,
             'category' => item_category::all(),
