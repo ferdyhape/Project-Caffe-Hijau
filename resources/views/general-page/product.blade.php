@@ -25,6 +25,7 @@
             @foreach ($category as $c)
             <li data-filter=".{{ $c->name }}">{{ $c->name }}</li>
             @endforeach
+            <li data-filter="uncategorized">Uncategorized</li>
           </ul>
         </div>
       </div>
@@ -32,9 +33,39 @@
         <div class="filters-content">
           <div class="row grid">
             @foreach ($item as $i)
+            @if (is_null($i->item_category))
+            <div class="col-lg-4 col-md-4 all uncategorized">
+              <div class="product-item">
+                @if (is_null($i->picture))
+                <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" alt="item-picture"></a>
+                @else
+                <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
+                @endif
+                <div class="down-content">
+                  <a href="#">
+                    <h4>{{ $i->name }}</h4>
+                  </a>
+                  <h6>{{ $i->price }}</h6>
+                  <p><i class="fa fa-tags"> </i> Uncategorized</p>
+                  <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                  </ul>
+                  <span>Reviews (12)</span>
+                </div>
+              </div>
+            </div>
+            @else
             <div class="col-lg-4 col-md-4 all {{ $i->item_category->name }}">
               <div class="product-item">
-                <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt=""></a>
+                @if (is_null($i->picture))
+                <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" alt="item-picture"></a>
+                @else
+                <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
+                @endif
                 <div class="down-content">
                   <a href="#">
                     <h4>{{ $i->name }}</h4>
@@ -52,6 +83,7 @@
                 </div>
               </div>
             </div>
+            @endif
             @endforeach
           </div>
         </div>

@@ -13,18 +13,18 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ url('dashboard') }}">
+    <li class="nav-item {{ ($title === 'Dashboard' ? 'active' : '' ) }}">
+        <a class="nav-link py-2 ps-4" href="{{ url('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('dashboard/item') }}">
+    <li class="nav-item {{ ($title === 'Item Management' ? 'active' : '' ) }}">
+        <a class="nav-link py-2 ps-4" href="{{ url('dashboard/item') }}">
             <i class="fas fa-fw fa-mug-saucer"></i>
             <span>Items</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('dashboard/category') }}">
+    <li class="nav-item {{ ($title === 'Category Management' ? 'active' : '' ) }}">
+        <a class="nav-link py-2 ps-4" href="{{ url('dashboard/category') }}">
             <i class="fas fa-fw fa-tags"></i>
             <span>Categories</span></a>
     </li>
@@ -39,8 +39,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
+        <a class="nav-link py-2 ps-4 collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Components</span>
         </a>
@@ -55,7 +55,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+        <a class="nav-link py-2 ps-4 collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
@@ -81,8 +81,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
+        <a class="nav-link py-2 ps-4 collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
         </a>
@@ -102,14 +102,14 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('dashboard/charts')}}">
+        <a class="nav-link py-2 ps-4" href="{{ url('dashboard/charts')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('dashboard/table') }}">
+        <a class="nav-link py-2 ps-4" href="{{ url('dashboard/table') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
     </li>

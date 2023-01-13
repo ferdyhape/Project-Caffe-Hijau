@@ -36,15 +36,20 @@
         </div>
       </div>
       @foreach ($item as $i)
-      <div class="col-md-4">
+      @if (is_null($i->item_category))
+      <div class="col-lg-4 col-md-4 all uncategorized">
         <div class="product-item">
+          @if (is_null($i->picture))
+          <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" alt="item-picture"></a>
+          @else
           <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
+          @endif
           <div class="down-content">
             <a href="#">
               <h4>{{ $i->name }}</h4>
             </a>
             <h6>{{ $i->price }}</h6>
-            <p>{{ $i->description }}</p>
+            <p><i class="fa fa-tags"> </i> Uncategorized</p>
             <ul class="stars">
               <li><i class="fa fa-star"></i></li>
               <li><i class="fa fa-star"></i></li>
@@ -52,10 +57,36 @@
               <li><i class="fa fa-star"></i></li>
               <li><i class="fa fa-star"></i></li>
             </ul>
-            <span>Reviews (24)</span>
+            <span>Reviews (12)</span>
           </div>
         </div>
       </div>
+      @else
+      <div class="col-lg-4 col-md-4 all {{ $i->item_category->name }}">
+        <div class="product-item">
+          @if (is_null($i->picture))
+          <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" alt="item-picture"></a>
+          @else
+          <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
+          @endif
+          <div class="down-content">
+            <a href="#">
+              <h4>{{ $i->name }}</h4>
+            </a>
+            <h6>{{ $i->price }}</h6>
+            <p><i class="fa fa-tags"> </i> {{ $i->item_category->name }}</p>
+            <ul class="stars">
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+            </ul>
+            <span>Reviews (12)</span>
+          </div>
+        </div>
+      </div>
+      @endif
       @endforeach
     </div>
   </div>
