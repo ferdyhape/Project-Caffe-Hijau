@@ -16,15 +16,15 @@ class ItemCategorySeeder extends Seeder
     public function run()
     {
         item_category::create([
-            'name' => 'Coffe',
+            'name' => 'Original',
             'description' => 'Commodo proident et elit nulla ut ea.'
         ]);
         item_category::create([
-            'name' => 'Tea',
+            'name' => 'Request',
             'description' => 'Dolor fugiat voluptate consequat veniam anim sunt deserunt velit velit.'
         ]);
         item_category::create([
-            'name' => 'Angkringannese',
+            'name' => 'Large',
             'description' => 'Sint ullamco nisi velit veniam sunt sint consequat cupidatat.'
         ]);
     }

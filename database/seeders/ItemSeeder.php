@@ -16,39 +16,81 @@ class ItemSeeder extends Seeder
     public function run()
     {
         item::create([
-            'name' => 'Americano',
-            'price' => 10000,
+            'name' => 'Anniversary Brownies',
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Anniv-Brownies.jpg'
+        ]);
+        item::create([
+            'name' => 'Brownies Semhas',
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Brownnies-Semhas.jpg'
+        ]);
+        item::create([
+            'name' => 'Crumble Brownies',
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Crumble-Brownies.jpg'
+        ]);
+        item::create([
+            'name' => 'Crumble Original Brownies',
+            'price' => 175000,
             'category_id' => 1,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/tea.jpg'
+            'picture' => 'item-picture/Crumble-Ori.jpg'
         ]);
         item::create([
-            'name' => 'Torabicca',
-            'price' => 12500,
-            'category_id' => 1,
-            'description' => "This is descsription",
-            'picture' => 'item-picture/tea.jpg'
-        ]);
-        item::create([
-            'name' => 'Latte',
-            'price' => 14999,
-            'category_id' => 1,
-            'description' => "This is descsription",
-            'picture' => 'item-picture/tea.jpg'
-        ]);
-        item::create([
-            'name' => 'Tarik Tea',
-            'price' => 8000,
+            'name' => 'Custom Brownies',
+            'price' => 175000,
             'category_id' => 2,
-            'description' => "This is descsription",
-            'picture' => 'item-picture/coffe.jpg'
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Custom-Brownies.jpg'
         ]);
         item::create([
-            'name' => 'Lemon Tea',
-            'price' => 70000,
+            'name' => "Mother Day's Brownies",
+            'price' => 175000,
+            'category_id' => 3,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Mother-Day-Large.jpg'
+        ]);
+        item::create([
+            'name' => "Mother Day's 2 Brownies",
+            'price' => 175000,
             'category_id' => 2,
-            'description' => "This is descsription",
-            'picture' => 'item-picture/coffe.jpg'
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Mother-Day.jpg'
+        ]);
+        item::create([
+            'name' => "Mother Day's 3 Brownies",
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Mother-Day2.jpg'
+        ]);
+        item::create([
+            'name' => "Mother Day's 4 Brownies",
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Mother-Day3.jpeg'
+        ]);
+        item::create([
+            'name' => "Packaging Style 1",
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Packaging-1.jpg'
+        ]);
+        item::create([
+            'name' => "Packaging Style 2",
+            'price' => 175000,
+            'category_id' => 2,
+            'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
+            'picture' => 'item-picture/Packaging-2.jpg'
         ]);
     }
 }
