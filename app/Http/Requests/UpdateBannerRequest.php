@@ -25,6 +25,10 @@ class UpdateBannerRequest extends FormRequest
     {
         return [
             'name' => 'required|max:40',
+            'attention' => 'nullable|string|max:40',
+            'fzAttention' => 'nullable|integer',
+            'offer' => 'nullable|string|max:40',
+            'fzOffer' => 'nullable|integer',
             'picture' => 'mimes:png,jpg,jpeg|max:2048',
         ];
     }
