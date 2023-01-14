@@ -13,7 +13,7 @@ class GeneralPageController extends Controller
     {
         return view('client-side.index', [
             'title' => 'Home',
-            'item' => item::orderBy('created_at', 'desc')->get(),
+            'item' => item::orderBy('created_at', 'desc')->paginate(3),
         ]);
     }
 
@@ -37,7 +37,7 @@ class GeneralPageController extends Controller
             'title' => 'Products',
             'category' => item_category::all(),
             // 'item' => item::all(),
-            'item' => item::paginate(5),
+            'item' => item::paginate(6),
         ]);
     }
 }
