@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\ItemSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\BannerSeeder;
 use Database\Seeders\ItemCategorySeeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ItemSeeder::class,
             ItemCategorySeeder::class,
+            BannerSeeder::class,
         ]);
     }
 }
