@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin-side.dashboard.layouts.main')
 @section('content')
 
 <body class="bg-gradient-primary">
