@@ -64,7 +64,7 @@
                         @enderror
 
                     </div>
-                    <img class="img-preview img-fluid mt-1" id="img-preview">
+                    <img class="img-preview img-fluid mt-3 mx-auto" id="img-preview">
                     <button type="submit" class="btn btn-primary btn-user btn-block mt-3">Add Item</button>
                 </form>
             </div>
