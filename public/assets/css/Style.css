@@ -467,6 +467,7 @@ header .navbar {
 }
 
 .product-item img {
+    width: 100%;
     overflow: hidden;
 }
 
@@ -484,8 +485,8 @@ header .navbar {
     color: #121212;
 }
 
-.product-item .down-content p {
-    margin-bottom: 20px;
+.product-item .down-content .price {
+    color: #098b67;
 }
 
 .product-item .down-content ul li {

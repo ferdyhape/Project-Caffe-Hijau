@@ -33,6 +33,8 @@
         <div class="filters-content">
           <div class="row grid">
             @foreach ($item as $i)
+
+            {{-- if category is not connected --}}
             @if (is_null($i->item_category))
             <div class="col-lg-4 col-md-4 all uncategorized">
               <div class="product-item">
@@ -46,12 +48,15 @@
                   <a href="#">
                     <h4>{{ $i->name }}</h4>
                   </a>
-                  <p><i class="fa fa-tags"> </i> Uncategorized</p>
-                  <span>{{ $i->price }}</span>
+                  <div class="info d-flex justify-content-between border-top pt-3">
+                    <p><i class="fa fa-tags"> </i> {{ $i->item_category->name }}</p>
+                    <p class="price fw-bold font-monospace">Rp {{ $i->price }}</p>
+                  </div>
                 </div>
               </div>
             </div>
 
+            {{-- if category is connected --}}
             @else
             @php
             $category = $i->item_category->name
@@ -69,8 +74,10 @@
                   <a href="#">
                     <h4>{{ $i->name }}</h4>
                   </a>
-                  <p><i class="fa fa-tags"> </i> {{ $i->item_category->name }}</p>
-                  <span>{{ $i->price }}</span>
+                  <div class="info d-flex justify-content-between border-top pt-3">
+                    <p><i class="fa fa-tags"> </i> {{ $i->item_category->name }}</p>
+                    <p class="price fw-bold font-monospace">Rp {{ $i->price }}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,18 +87,12 @@
         </div>
       </div>
       <div class="col-md-12">
-        <ul class="pages">
-          <li><a href="#">1</a></li>
-          <li class="active"><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-        </ul>
+        <div class="card-footer">
+          {{$item->links()}}
+        </div>
       </div>
     </div>
-    <div class="d-flex jusitfy-content-center">
-      {{$item->render()}}
-    </div>
+
   </div>
 </div>
 @endsection
