@@ -42,9 +42,10 @@ class BannerController extends Controller
      */
     public function store(StoreBannerRequest $request)
     {
-
         $dataNewbanner = $request->all();
-
+        $dataNewbanner['fzAttention'] = (is_null($dataNewbanner['fzAttention'])) ? 35 : $dataNewbanner['fzAttention'];
+        $dataNewbanner['fzOffer'] = (is_null($dataNewbanner['fzOffer'])) ? 40 : $dataNewbanner['fzOffer'];
+        // dd($dataNewbanner);
         $name_picture_path = $request->file('picture')->store('banner-picture', 'public');
         $dataNewbanner['picture'] = $name_picture_path;
         Banner::create($dataNewbanner);
@@ -87,6 +88,8 @@ class BannerController extends Controller
     public function update(UpdateBannerRequest $request, $id)
     {
         $Updatebanner = $request->all();
+        $Updatebanner['fzAttention'] = (is_null($Updatebanner['fzAttention'])) ? 35 : $Updatebanner['fzAttention'];
+        $Updatebanner['fzOffer'] = (is_null($Updatebanner['fzOffer'])) ? 40 : $Updatebanner['fzOffer'];
         if ($request->file('picture')) {
             if ($request->oldPicture) {
                 File::delete('storage/' . $request->oldPicture);
@@ -99,6 +102,10 @@ class BannerController extends Controller
         // dd($Updatebanner);
         $findbanner = banner::find($id);
         $findbanner->name = $Updatebanner['name'];
+        $findbanner->attention = $Updatebanner['attention'];
+        $findbanner->fzAttention = $Updatebanner['fzAttention'];
+        $findbanner->offer = $Updatebanner['offer'];
+        $findbanner->fzOffer = $Updatebanner['fzOffer'];
         $findbanner->picture = $Updatebanner['picture'];
         $findbanner->save();
 
