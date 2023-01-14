@@ -37,7 +37,7 @@ class GeneralPageController extends Controller
             'title' => 'Products',
             'category' => item_category::all(),
             // 'item' => item::all(),
-            'item' => item::orderBy('price', 'asc')->get(),
+            'item' => item::paginate(5),
         ]);
     }
 }
