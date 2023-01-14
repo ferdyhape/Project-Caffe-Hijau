@@ -26,6 +26,11 @@
             <i class="fas fa-fw fa-tags"></i>
             <span>Categories</span></a>
     </li>
+    <li class="nav-item {{ ($title === 'Banner Management' ? 'active' : '' ) }}">
+        <a class="nav-link py-2 ps-4" href="{{ url('dashboard/banner') }}">
+            <i class="fas fa-fw fa-images"></i>
+            <span>Banner</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-1">
