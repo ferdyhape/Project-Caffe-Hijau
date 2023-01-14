@@ -3,6 +3,7 @@
 use App\Models\item;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -60,4 +61,5 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/forgot-password', [DashboardController::class, 'forgot_password'])->name('dashboardforgorpassword');
     Route::resource('/item', ItemController::class);
     Route::resource('/category', CategoryController::class);
+    Route::resource('/banner', BannerController::class);
 });
