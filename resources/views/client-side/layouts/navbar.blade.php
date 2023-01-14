@@ -28,12 +28,13 @@
                             Us</a>
                     </li>
                     @if (auth()->user()->level == 'admin')
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {{auth()->user()->name}}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard Admin</a></li>
                             <li>
                                 <form action="/logout" method="POST">

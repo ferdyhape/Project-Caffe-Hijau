@@ -40,24 +40,17 @@
       <div class="col-lg-4 col-md-4 all uncategorized">
         <div class="product-item">
           @if (is_null($i->picture))
-          <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" alt="item-picture"></a>
+          <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" class="img-fluid"
+              alt="item-picture"></a>
           @else
-          <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
+          <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" class="img-fluid" alt="item-picture"></a>
           @endif
           <div class="down-content">
             <a href="#">
               <h4>{{ $i->name }}</h4>
             </a>
-            <h6>{{ $i->price }}</h6>
             <p><i class="fa fa-tags"> </i> Uncategorized</p>
-            <ul class="stars">
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-            </ul>
-            <span>Reviews (12)</span>
+            <span>{{ $i->price }}</span>
           </div>
         </div>
       </div>
@@ -65,24 +58,17 @@
       <div class="col-lg-4 col-md-4 all {{ $i->item_category->name }}">
         <div class="product-item">
           @if (is_null($i->picture))
-          <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" alt="item-picture"></a>
+          <a href="#"><img src="{{ asset('storage/item-picture/comingsoon.jpg') }}" class="img-fluid"
+              alt="item-picture"></a>
           @else
-          <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" alt="item-picture"></a>
+          <a href="#"><img src="{{ asset('storage/'. $i->picture) }}" class="img-fluid" alt="item-picture"></a>
           @endif
           <div class="down-content">
             <a href="#">
               <h4>{{ $i->name }}</h4>
             </a>
-            <h6>{{ $i->price }}</h6>
             <p><i class="fa fa-tags"> </i> {{ $i->item_category->name }}</p>
-            <ul class="stars">
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-              <li><i class="fa fa-star"></i></li>
-            </ul>
-            <span>Reviews (12)</span>
+            <span>{{ $i->price }}</span>
           </div>
         </div>
       </div>

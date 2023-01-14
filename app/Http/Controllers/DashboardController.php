@@ -6,6 +6,7 @@ use App\Models\item;
 use App\Models\item_category;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -15,6 +16,7 @@ class DashboardController extends Controller
             "title" => "Dashboard",
             "itemCount" => item::all()->count(),
             "categoryCount" => item_category::all()->count(),
+            "userCount" => User::all()->count(),
         ]);
     }
     public function table()

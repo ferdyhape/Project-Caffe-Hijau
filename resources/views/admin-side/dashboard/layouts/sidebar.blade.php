@@ -1,16 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <a class="sidebar-brand d-flex align-items-center btn btn-light justify-content-center my-3 mx-3 py-2"
+        href="{{ url('dashboard') }}">
+        <img src="{{ asset('assets/corp-assets/logo/BrowniesSantri-warna2.png') }}" alt="" width="60" height="60">
+        <div class="sidebar-brand-text text-start mx-2 text-success">Brownies Santri</div>
     </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item {{ ($title === 'Dashboard' ? 'active' : '' ) }}">
@@ -18,11 +14,13 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+
     <li class="nav-item {{ ($title === 'Item Management' ? 'active' : '' ) }}">
         <a class="nav-link py-2 ps-4" href="{{ url('dashboard/item') }}">
             <i class="fas fa-fw fa-mug-saucer"></i>
             <span>Items</span></a>
     </li>
+
     <li class="nav-item {{ ($title === 'Category Management' ? 'active' : '' ) }}">
         <a class="nav-link py-2 ps-4" href="{{ url('dashboard/category') }}">
             <i class="fas fa-fw fa-tags"></i>
@@ -30,7 +28,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider my-1">
 
     <!-- Heading -->
     <div class="sidebar-heading">
