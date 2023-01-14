@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center btn btn-light justify-content-center my-3 mx-3 py-2"
         href="{{ url('dashboard') }}">
-        <img src="{{ asset('assets/corp-assets/logo/BrowniesSantri-warna2.png') }}" alt="" width="60" height="60">
+        <img src="{{ asset('assets/corp-assets/logo/Logo2.png') }}" alt="" width="60" height="60">
         <div class="sidebar-brand-text text-start mx-2 text-success">Brownies Santri</div>
     </a>
 

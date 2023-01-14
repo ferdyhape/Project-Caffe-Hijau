@@ -2,9 +2,14 @@
 <header class="">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="/">
-
-                <h2>Brownies <em>Santri</em></h2>
+            <a class="navbar-brand d-flex" href="/">
+                <div class="logo my-auto me-2">
+                    <img src="{{ asset('assets/corp-assets/logo/Logo2.png') }}" class="bg-white p-0 rounded-circle"
+                        alt="" width="40" height="40">
+                </div>
+                <div class="text-brand my-auto">
+                    <h2>Brownies <em>Santri</em></h2>
+                </div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

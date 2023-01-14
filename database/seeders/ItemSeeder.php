@@ -20,77 +20,77 @@ class ItemSeeder extends Seeder
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Anniv-Brownies.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => 'Brownies Semhas',
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Brownnies-Semhas.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => 'Crumble Brownies',
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Crumble-Brownies.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => 'Crumble Original Brownies',
             'price' => 175000,
             'category_id' => 1,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Crumble-Ori.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => 'Custom Brownies',
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Custom-Brownies.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => "Mother Day's Brownies",
             'price' => 175000,
             'category_id' => 3,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Mother-Day-Large.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => "Mother Day's 2 Brownies",
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Mother-Day.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => "Mother Day's 3 Brownies",
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Mother-Day2.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => "Mother Day's 4 Brownies",
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Mother-Day3.jpeg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => "Packaging Style 1",
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Packaging-1.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
         item::create([
             'name' => "Packaging Style 2",
             'price' => 175000,
             'category_id' => 2,
             'description' => "Enim eu irure quis ad ipsum. Esse pariatur consectetur nisi commodo quis veniam commodo. Ipsum magna eiusmod ipsum non aliqua incididunt occaecat magna sit.",
-            'picture' => 'item-picture/Packaging-2.jpg'
+            'picture' => 'item-picture/dummy-image.png'
         ]);
     }
 }
