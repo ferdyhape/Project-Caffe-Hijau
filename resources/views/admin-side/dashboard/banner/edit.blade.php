@@ -21,20 +21,46 @@
                         </div>
                         @enderror
                     </div>
-                    @if (is_null($banner->picture))
-                    <div class="input-group">
-                        <label class="input-group-text" for="picture">Picture</label>
-                        <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture"
-                            name="picture" onchange="previewImage()">
-                        @error('picture')
-                        <div class="invalid-feedback">
+                    <div class="form-group">
+                        <input type="text"
+                            class="form-control form-control-user @error('attention') is-invalid @enderror"
+                            name="attention" placeholder="Attention Text (Optional)" value="{{ $banner->attention }}">
+                        @error('attention')
+                        <div class=" invalid-feedback">
                             {{ $message }}
                         </div>
                         @enderror
                     </div>
-                    <img class="img-preview img-fluid mt-3 mx-auto" id="img-preview">
-
-                    @else
+                    <div class="form-group">
+                        <input type="number"
+                            class="form-control form-control-user @error('fzAttention') is-invalid @enderror"
+                            name="fzAttention" placeholder="Font Size for Attention (Optional, default 35px)"
+                            value="{{ $banner->fzAttention }}">
+                        @error('fzAttention')
+                        <div class=" invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-user @error('offer') is-invalid @enderror"
+                            name="offer" placeholder="Offer text (Optional)" value="{{ $banner->offer }}">
+                        @error('offer')
+                        <div class=" invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <input type="number"
+                            class="form-control form-control-user @error('fzOffer') is-invalid @enderror" name="fzOffer"
+                            placeholder="Font Size for Offer (Optional, default 40px)" value="{{ $banner->fzOffer }}">
+                        @error('fzOffer')
+                        <div class=" invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
                     <button type="button" class="btn btn-primary" onclick="editPicture()">Change Image</button>
 
                     <div class="input-group my-3">
@@ -50,7 +76,6 @@
                             <img class="card-img-top img-preview img-fluid mt-1" alt="new-image" id="img-preview">
                         </div>
                     </div>
-                    @endif
 
                     <button type="submit" class="btn btn-primary btn-user btn-block mt-2">Edit banner</button>
                 </form>
