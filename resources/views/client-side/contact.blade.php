@@ -1,20 +1,5 @@
 @extends('client-side.layouts.main')
 @section('content')
-<!-- Page Content -->
-<div class="page-heading contact-heading header-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text-content">
-          <h4>contact us</h4>
-          <h2>let’s get in touch</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <div class="find-us">
   <div class="container">
     <div class="row">
@@ -31,9 +16,11 @@
 	4. Copy only URL and paste it within the src="" field below
 -->
         <div id="map">
+
           <iframe
-            src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            width="100%" height="330px" frameborder="0" style="border:0" allowfullscreen></iframe>
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126478.46856582166!2d112.59999188128417!3d-7.847655597498873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd62b27d10dfac7%3A0x9de22479abbb31e5!2sKec.%20Singosari%2C%20Kabupaten%20Malang%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1673769594603!5m2!1sid!2sid"
+            width="100%" height="330px" frameborder="0" style="border:0" allowfullscreen"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
       <div class="col-md-4">
