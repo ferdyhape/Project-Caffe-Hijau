@@ -1,16 +1,11 @@
 jQuery(document).ready(function ($) {
 
-
     "use strict";
-
-
 
     $(function () {
         $("#tabs").tabs();
     });
 
-
-    // Page loading animation
 
     $("#preloader").animate({
         'opacity': '0'
@@ -21,28 +16,21 @@ jQuery(document).ready(function ($) {
     });
 
     $(function () {
+        var login = document.getElementById("login-btn");
         $(window).scroll(function () {
             if ($(this).scrollTop() > 50) {
                 $("header").addClass("background-header");
+                login.style.backgroundColor = "#098B67";
+                login.style.color = "white";
             }
             if ($(this).scrollTop() < 50) {
                 $("header").removeClass("background-header");
+                login.style.backgroundColor = "white";
+                login.style.color = "#098B67";
             }
         });
     });
 
-    // $(window).scroll(function () {
-    //     var scroll = $(window).scrollTop();
-    //     var box1 = $('.product-item').height();
-    //     var box2 = $('.inner-content').height();
-    //     var header = $('header').height();
-
-    //     if (scroll >= box1 - header || scroll >= box2 - header) {
-    //         $("header").addClass("background-header");
-    //     } else {
-    //         $("header").removeClass("background-header");
-    //     }
-    // });
     if ($('.owl-clients').length) {
         $('.owl-clients').owlCarousel({
             loop: true,

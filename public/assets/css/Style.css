@@ -251,11 +251,20 @@ header .navbar {
     color: #121212 !important;
 }
 
-.background-header .navbar-nav a.nav-link {
+.background-header .navbar-nav a.nav-list {
     color: #1e1e1e !important;
 }
 
-.background-header .navbar-nav .nav-link:hover,
+.navbar-nav #login-btn:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+.background-header .navbar-nav .nav-list:hover,
 .background-header .navbar-nav .active>.nav-link,
 .background-header .navbar-nav .nav-link.active,
 .background-header .navbar-nav .nav-link.show,
@@ -307,11 +316,11 @@ header .navbar {
     margin-top: 5px;
 }
 
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .active>.nav-link,
-.navbar .navbar-nav .nav-link.active,
-.navbar .navbar-nav .nav-link.show,
-.navbar .navbar-nav .show>.nav-link {
+.navbar .navbar-nav .nav-list:hover,
+.navbar .navbar-nav .active>.nav-list,
+.navbar .navbar-nav .nav-list.active,
+.navbar .navbar-nav .nav-list.show,
+.navbar .navbar-nav .show>.nav-list {
     color: #fff;
     padding-bottom: 25px;
     border-bottom: 3px solid #098b67;
@@ -442,6 +451,7 @@ header .navbar {
     border: 1px solid #eee;
     margin-bottom: 30px;
     z-index: 2;
+    transition: transform .5s ease;
 }
 
 .product-item .down-content {
@@ -452,6 +462,14 @@ header .navbar {
 .product-item img {
     width: 100%;
     overflow: hidden;
+}
+
+.product-item:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .product-item .down-content h4 {

@@ -9,7 +9,7 @@
 
 <body>
 
-    @include('client-side.layouts.preload')
+    {{-- @include('client-side.layouts.preload') --}}
 
     @if (!Route::is('auth'))
     @include('client-side.layouts.navbar')

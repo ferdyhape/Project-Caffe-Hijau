@@ -18,23 +18,27 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item {{ ($title === 'Home' ? 'active' : '' ) }}">
-                        <a class="nav-link" href="/">Home
+                        <a class="nav-link nav-list" href="/">Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($title === 'Products' ? 'active' : '' ) }}" href="/product">Our
+                        <a class="nav-link nav-list {{ ($title === 'Products' ? 'active' : '' ) }}"
+                            href="{{ url('/product')}}">Our
                             Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($title === 'About Us' ? 'active' : '' ) }}" href="/about">About Us</a>
+                        <a class="nav-link nav-list {{ ($title === 'About Us' ? 'active' : '' ) }}"
+                            href="{{ url('/about')}}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($title === 'Contact' ? 'active' : '' ) }}" href="/contact">Contact
+                        <a class="nav-link nav-list {{ ($title === 'Contact' ? 'active' : '' ) }}"
+                            href="{{ url('/contact')}}">Contact
                             Us</a>
                     </li>
+                    @if (Auth::check())
                     @if (auth()->user()->level == 'admin')
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link nav-list dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             {{auth()->user()->name}}
                         </a>
@@ -56,9 +60,15 @@
                         <form action="/logout" method="POST">
                             @csrf
                             <button type="submit" class="border-0 bg-transparent">
-                                <a class="nav-link">Logout</a>
+                                <a class="nav-link nav-list">Logout</a>
                             </button>
                         </form>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link btn px-4 py-2 rounded-pill shadow-sm" id="login-btn" style=""
+                            href="{{ url('/login')}}">Login</a>
                     </li>
                     @endif
                 </ul>

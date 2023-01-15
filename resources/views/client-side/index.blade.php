@@ -16,14 +16,13 @@
   </div>
 </div>
 <!-- Banner Ends Here -->
-
 <div class="latest-products">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="section-heading">
           <h2>Latest Products</h2>
-          <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
+          <a href="{{ url('product')}}">view all products <i class="fa fa-angle-right"></i></a>
         </div>
       </div>
       @foreach ($item as $i)
@@ -92,7 +91,7 @@
             <li><a href="#">Corporis, omnis doloremque</a></li>
             <li><a href="#">Non cum id reprehenderit</a></li>
           </ul>
-          <a href="about.html" class="filled-button">Read More</a>
+          <a href="{{ url('about')}}" class="filled-button">Read More</a>
         </div>
       </div>
       <div class="col-md-6">
