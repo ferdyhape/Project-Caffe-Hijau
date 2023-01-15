@@ -4,24 +4,15 @@
 <!-- Banner Starts Here -->
 <div class="banner header-text">
   <div class="owl-banner owl-carousel">
-    <div class="banner-item-01">
+    @foreach ($banner as $b)
+    <div class="banner-item"
+      style="background-image: radial-gradient(circle, rgba(0, 0, 0, 0.7903536414565826) 0%, rgba(0, 0, 0, 0.5186449579831933) 100%), url(storage/{{ $b->picture }});">
       <div class="text-content">
-        <h4>Best Offer</h4>
-        <h2>New Arrivals On Sale</h2>
+        <h4 class="btn px-4 attention" style="font-size: {{ $b->fzAttention }}px;">{{ $b->attention }}</h4>
+        <h2 style=" font-size: {{ $b->fzOffer }}px;">{{ $b->offer }}</h2>
       </div>
     </div>
-    <div class="banner-item-02">
-      <div class="text-content">
-        <h4>Flash Deals</h4>
-        <h2>Get your best products</h2>
-      </div>
-    </div>
-    <div class="banner-item-03">
-      <div class="text-content">
-        <h4>Last Minute</h4>
-        <h2>Grab last minute deals</h2>
-      </div>
-    </div>
+    @endforeach
   </div>
 </div>
 <!-- Banner Ends Here -->
