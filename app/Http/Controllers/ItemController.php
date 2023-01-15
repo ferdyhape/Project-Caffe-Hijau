@@ -22,6 +22,7 @@ class ItemController extends Controller
         return view('admin-side.dashboard.item.index', [
             "title" => "Item Management",
             'item' => item::all(),
+            'category' => item_category::all(),
         ]);
     }
 
