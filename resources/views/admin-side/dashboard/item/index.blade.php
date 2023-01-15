@@ -1,11 +1,10 @@
 @extends('admin-side.dashboard.layouts.main')
 @section('content')
 <div class="container-fluid">
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary my-auto">Item List</h6>
-            <a href="{{ url('dashboard/item/create') }}" class="btn btn-primary">Add Item</a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add Item</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -16,7 +15,6 @@
                             <th>Price</th>
                             <th>Category</th>
                             <th>Description</th>
-                            <th>Picture</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -26,7 +24,6 @@
                             <th>Price</th>
                             <th>Category</th>
                             <th>Description</th>
-                            <th>Picture</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -35,54 +32,288 @@
                         <tr>
                             <td>{{ $i->name }}</td>
                             <td>{{ $i->price }}</td>
-                            {{-- if category not connected --}}
-                            @if (is_null($i->item_category))
-                            <td>
-                                <p>[Category not selected]<br><strong><a href="item/{{ $i->id }}/edit">Select
-                                            Category</a></strong></p>
-                            </td>
-                            @else
                             <td>{{ $i->item_category->name }}</td>
-                            @endif
-
-                            {{-- if description is null --}}
-                            @if (is_null($i->description))
-                            <td>
-                                <p>[No description]<br><strong><a href="item/{{ $i->id }}/edit">Add
-                                            Description</a></strong></p>
-                            </td>
-                            @else
                             <td>{{ $i->description }}</td>
-                            @endif
-
-                            {{-- if image not included --}}
-                            @if (is_null($i->picture))
-                            <td>Image not included</td>
-                            @else
-                            <td class="text-center">
-                                <img src="{{ asset('storage/'. $i->picture) }}" alt="item-image" width="150">
-                            </td>
-                            @endif
                             <td class="d-flex justify-content-around">
-                                <a href="item/{{ $i->id }}" class="badge bg-success text-white p-2 mx-2"><i
-                                        class="fas fa-fw fa-eye" style="font-size: 18px;"></i></a>
-                                <a href="item/{{ $i->id }}/edit" class="badge bg-warning text-white p-2 mx-2"><i
-                                        class="fas fa-fw fa-pencil" style="font-size: 18px;"></i></a>
-                                <form action="item/{{ $i->id }}" method="POST">
-                                    @method('delete')
-                                    @csrf
-                                    <button class="badge bg-danger border-0 p-2 mx-2"
-                                        onclick="return confirm('deleting {{ $i->name }} items??')"><i
-                                            class="fas fa-fw fa-trash text-white" style="font-size: 18px;"></i></button>
-                                </form>
+                                <button class="badge bg-success border-0 text-white p-2 mx-2" data-bs-toggle="modal"
+                                    data-bs-target="#imageModal-{{$i->id}}"><i class="fas fa-fw fa-images"
+                                        style="font-size: 18px;"></i></button>
+                                <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
+                                    data-bs-target="#editModal-{{$i->id}}"><i class="fas fa-fw fa-pencil"
+                                        style="font-size: 18px;"></i></button>
+                                <button class="badge bg-danger border-0 p-2 mx-2" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal-{{$i->id}}"><i class="fas fa-fw fa-trash text-white"
+                                        style="font-size: 18px;"></i></button>
+
+
+                                <!-- Modal Image -->
+                                <div class="modal fade" id="imageModal-{{$i->id}}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Image of
+                                                    <strong>[{{$i->name }}]</strong>
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="text-center">
+                                                    @if (is_null($i->picture))
+                                                    <p>Image not included</p>
+                                                    @else
+                                                    <img src="{{ asset('storage/'. $i->picture) }}" alt="item-image"
+                                                        width="70%">
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal Edit -->
+                                <div class="modal fade" id="editModal-{{$i->id}}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Item
+                                                    <strong>[{{$i->name }}]</strong>
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url('dashboard/item/'.$i->id) }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <img src="{{ asset('storage/'. $i->picture) }}"
+                                                        class="card-img-top mb-4" alt="item-image">
+                                                    <input type="hidden" name="oldPicture"
+                                                        value="{{ $i->picture }}"><br>
+                                                    <div class="form-group">
+                                                        <input type="text"
+                                                            class="form-control form-control-user @error('name') is-invalid @enderror"
+                                                            name="name" placeholder="Item Name" value="{{ $i->name }}"
+                                                            required autofocus>
+                                                        @error('name')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="number"
+                                                            class="form-control form-control-user @error('price') is-invalid @enderror"
+                                                            name="price" placeholder="Price" value="{{ $i->price }}"
+                                                            required>
+                                                        @error('price')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text"
+                                                            class="form-control form-control-user @error('description') is-invalid @enderror"
+                                                            name="description" placeholder="Description"
+                                                            value="{{ $i->description }}">
+                                                        @error('description')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <select
+                                                            class="form-control @error('category_id') is-invalid @enderror"
+                                                            id="category_id" name="category_id">
+                                                            @if(is_null($i->item_category))
+                                                            <option selected class="text-danger">Select categories
+                                                            </option>
+                                                            @endif
+                                                            @foreach($category as $c)
+                                                            @if( $i->category_id == $c->id)
+                                                            <option value="{{ $c->id }}" selected>{{ $c->name }}
+                                                            </option>
+                                                            @else
+                                                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                                            @endif
+                                                            @endforeach
+                                                        </select>
+                                                        @error('category_id')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                    @if (is_null($i->picture))
+                                                    <div class="input-group">
+                                                        <label class="input-group-text" for="picture">Picture</label>
+                                                        <input type="file"
+                                                            class="form-control @error('picture') is-invalid @enderror"
+                                                            id="picture" name="picture" onchange="previewImageEdit()">
+                                                        @error('picture')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                    <img class="img-preview img-fluid mt-1" id="img-preview">
+
+                                                    @else
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="editPicture()">Change Image</button>
+
+                                                    <div class="input-group my-3">
+                                                        <input type="file" class="form-control" id="newpicture"
+                                                            name="picture" onchange="previewImageEdit()"
+                                                            style="display: none">
+                                                    </div>
+
+                                                    <div class="card-body" id="card-preview" style="display: none">
+                                                        <div class="card-header p-0">
+                                                            Preview new Image
+                                                        </div>
+                                                        <div class="card-body p-0">
+                                                            <img class="card-img-top img-preview img-fluid mt-1"
+                                                                alt="new-image" id="img-preview">
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary mt-2">Edit Item</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal delete -->
+                                <div class="modal fade" id="deleteModal-{{$i->id}}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Deleting Item <strong>{{ $i->name }}</strong>?
+                                            </div>
+                                            <form action="item/{{ $i->id }}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <input type="submit" class="btn btn-primary" value="Delete">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
+                <!-- Modal Create -->
+                <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ url('dashboard/item') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="text"
+                                            class="form-control form-control-user @error('name') is-invalid @enderror"
+                                            name="name" placeholder="Item Name" required autofocus>
+                                        @error('name')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number"
+                                            class="form-control form-control-user @error('price') is-invalid @enderror"
+                                            name="price" placeholder="Price" required>
+                                        @error('price')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text"
+                                            class="form-control form-control-user @error('description') is-invalid @enderror"
+                                            name="description" placeholder="Description">
+                                        @error('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control @error('Category') is-invalid @enderror"
+                                            id="category_id" name="category_id" required>
+                                            <option>Category</option>
+                                            @foreach($category as $c)
+                                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('category_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-group-text" for="picture">Picture</label>
+                                        <input type="file" class="form-control @error('picture') is-invalid @enderror"
+                                            id="picture" name="picture" onchange="previewImageCreate()">
+                                        @error('picture')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+
+                                    </div>
+                                    <img class="img-preview img-fluid mt-3 mx-auto" id="img-preview">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary ">Add
+                                    Item</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 @endsection
