@@ -1,6 +1,6 @@
 <!-- Header -->
-<header class="">
-    <nav class="navbar navbar-expand-lg">
+<header class="fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex" href="/">
                 <div class="logo my-auto me-2">
