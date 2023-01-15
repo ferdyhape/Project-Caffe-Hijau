@@ -33,6 +33,7 @@ true) ) {
         </div>
     </div>
     @include('admin-side.dashboard.layouts.script')
+    @include('sweetalert::alert')
 </body>
 @endif
 

@@ -57,7 +57,7 @@ class ItemController extends Controller
 
         item::create($dataNewItem);
 
-        return redirect('/dashboard/item')->with('success', 'Data item berhasil ditambahkan');
+        return redirect('/dashboard/item')->with('toast_success', 'Data item successfully added');
     }
 
     /**
@@ -116,9 +116,9 @@ class ItemController extends Controller
         $findItem->picture = $UpdateItem['picture'];
         $findItem->save();
 
-        $request->session()->flash('success', 'Item has been updated');
+        $request->session();
 
-        return redirect('/dashboard/item');
+        return redirect('/dashboard/item')->with('toast_success', 'Data item successfully updated');
     }
 
     /**
@@ -129,13 +129,11 @@ class ItemController extends Controller
      */
     public function destroy(item $item)
     {
-        // dd($item);
         if ($item->picture) {
             File::delete('storage/' . $item->picture);
         }
 
-        // item::destroy($item->id);
         $item->delete();
-        return redirect('dashboard/item')->with('success', 'Data item berhasil dihapus');
+        return redirect('dashboard/item')->with('toast_success', 'Data item successfully deleted');
     }
 }

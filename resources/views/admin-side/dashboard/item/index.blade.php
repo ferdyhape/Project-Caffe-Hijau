@@ -41,10 +41,14 @@
                                 <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
                                     data-bs-target="#editModal-{{$i->id}}"><i class="fas fa-fw fa-pencil"
                                         style="font-size: 18px;"></i></button>
-                                <button class="badge bg-danger border-0 p-2 mx-2" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal-{{$i->id}}"><i class="fas fa-fw fa-trash text-white"
+                                <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$i->id}}"
+                                    data-name="{{$i->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
-
+                                <form action="item/{{ $i->id }}" id="form-delete" method="POST" style="display: none">
+                                    @method('delete')
+                                    @csrf
+                                    <input type="submit" class="" value="Delete">
+                                </form>
 
                                 <!-- Modal Image -->
                                 <div class="modal fade" id="imageModal-{{$i->id}}" tabindex="-1"
@@ -165,7 +169,7 @@
                                                         </div>
                                                         @enderror
                                                     </div>
-                                                    <img class="img-preview img-fluid mt-1" id="img-preview">
+                                                    <img class="img-preview-edit img-fluid mt-1" id="img-preview-edit">
 
                                                     @else
                                                     <button type="button" class="btn btn-primary"
@@ -182,8 +186,8 @@
                                                             Preview new Image
                                                         </div>
                                                         <div class="card-body p-0">
-                                                            <img class="card-img-top img-preview img-fluid mt-1"
-                                                                alt="new-image" id="img-preview">
+                                                            <img class="card-img-top img-preview-edit img-fluid mt-1"
+                                                                alt="new-image" id="img-preview-edit">
                                                         </div>
                                                     </div>
                                                     @endif
@@ -192,38 +196,14 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary mt-2">Edit Item</button>
+                                                <button type="submit" class="btn btn-warning mt-2">Edit Item</button>
                                             </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Modal delete -->
-                                <div class="modal fade" id="deleteModal-{{$i->id}}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Deleting Item <strong>{{ $i->name }}</strong>?
-                                            </div>
-                                            <form action="item/{{ $i->id }}" method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <input type="submit" class="btn btn-primary" value="Delete">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </td>
                         </tr>
                         @endforeach
@@ -300,7 +280,7 @@
                                         @enderror
 
                                     </div>
-                                    <img class="img-preview img-fluid mt-3 mx-auto" id="img-preview">
+                                    <img class="img-preview-create img-fluid mt-3 mx-auto" id="img-preview-create">
 
                             </div>
                             <div class="modal-footer">

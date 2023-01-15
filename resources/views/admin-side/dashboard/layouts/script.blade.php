@@ -6,6 +6,8 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{ URL::asset('assets/dashboard/vendor/jquery/jquery.min.js'); }}"></script>
+{{-- <script src="{{ URL::asset('/assets/dashboard/vendor/jquery/jquery.slim.js'); }}"></script> --}}
+<script src="{{ URL::asset('vendor/sweetalert/sweetalert.all.js'); }}"></script>
 <script src="{{ URL::asset('assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js'); }}"></script>
 <script src="{{ URL::asset('assets/bootstrap-5.0.2-dist/js/bootstrap.min.js'); }}"></script>
 
@@ -35,7 +37,7 @@
 <script>
     function previewImageCreate() {
         const image = document.querySelector('#picture');
-        const imgPreview = document.querySelector('.img-preview')
+        const imgPreview = document.querySelector('.img-preview-create')
 
         imgPreview.style.display = 'block';
 
@@ -56,7 +58,7 @@
         }
         
         const image = document.querySelector('#newpicture');
-        const imgPreview = document.querySelector('.img-preview')
+        const imgPreview = document.querySelector('.img-preview-edit')
         
         imgPreview.style.display = 'block';
         
@@ -75,4 +77,26 @@
         x.style.display = "none";
         }
     }
+    
+    $('body').on('click', '.delete-confirm', function () {
+
+        let id = $(this).data('id');
+        let name = $(this).data('name').toUpperCase();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to delete ${name}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("form-delete").submit()
+            }
+        })
+        
+    });
+
 </script>

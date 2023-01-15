@@ -50,7 +50,7 @@ class BannerController extends Controller
         $dataNewbanner['picture'] = $name_picture_path;
         Banner::create($dataNewbanner);
 
-        return redirect('/dashboard/banner')->with('success', 'Data banner berhasil ditambahkan');
+        return redirect('/dashboard/banner')->with('toast_success', 'Data banner successfully added');
     }
 
     /**
@@ -109,9 +109,9 @@ class BannerController extends Controller
         $findbanner->picture = $Updatebanner['picture'];
         $findbanner->save();
 
-        $request->session()->flash('success', 'banner has been updated');
+        $request->session();
 
-        return redirect('/dashboard/banner');
+        return redirect('/dashboard/banner')->with('toast_success', 'Data banner successfully updated');
     }
 
     /**
@@ -127,6 +127,6 @@ class BannerController extends Controller
         }
 
         $banner->delete();
-        return redirect('dashboard/banner')->with('success', 'Data banner berhasil dihapus');
+        return redirect('dashboard/banner')->with('toast_success', 'Data item successfully deleted');
     }
 }

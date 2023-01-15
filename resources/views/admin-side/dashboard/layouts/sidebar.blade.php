@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center btn btn-light justify-content-center my-3 mx-3 py-2"
         href="{{ url('dashboard') }}">
-        <img src="{{ asset('assets/corp-assets/logo/logo4.png') }}" alt="" width="75%">
+        <img src="{{ asset('assets/corp-assets/logo/logo4.png') }}" id="logoImg" alt="logo" width="75%">
     </a>
 
     <!-- Nav Item - Dashboard -->
@@ -37,7 +37,7 @@
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <button class="rounded-circle border-0" id="sidebarToggle" onclick="sidebarToggle()"></button>
     </div>
 
 </ul>

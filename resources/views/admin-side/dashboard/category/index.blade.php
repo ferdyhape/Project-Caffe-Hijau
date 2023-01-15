@@ -40,10 +40,16 @@
                                 <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
                                     data-bs-target="#editModal-{{$c->id}}"><i class="fas fa-fw fa-pencil"
                                         style="font-size: 18px;"></i></button>
-                                <button class="badge bg-danger border-0 p-2 mx-2" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal-{{$c->id}}"><i class="fas fa-fw fa-trash text-white"
+                                <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$c->id}}"
+                                    data-name="{{$c->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
 
+                                <form action="category/{{ $c->id }}" id="form-delete" method="POST"
+                                    style="display: none">
+                                    @method('delete')
+                                    @csrf
+                                    <input type="submit" class="" value="Delete">
+                                </form>
                                 <!-- Modal Edit -->
                                 <div class="modal fade" id="editModal-{{$c->id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -88,35 +94,9 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary mt-2">Edit
+                                                <button type="submit" class="btn btn-warning mt-2">Edit
                                                     Category</button>
                                             </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Modal delete -->
-                                <div class="modal fade" id="deleteModal-{{$c->id}}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Deleting Category <strong>{{ $c->name }}</strong>?
-                                            </div>
-                                            <form action="category/{{ $c->id }}" method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <input type="submit" class="btn btn-primary" value="Delete">
-                                                </div>
                                             </form>
                                         </div>
                                     </div>
