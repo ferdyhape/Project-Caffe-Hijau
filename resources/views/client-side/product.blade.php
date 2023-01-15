@@ -1,21 +1,6 @@
 @extends('client-side.layouts.main')
 @section('content')
-<!-- Page Content -->
-<div class="page-heading products-heading header-text">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text-content">
-          <h4>new arrivals</h4>
-          <h2>Brownies Santri products</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="products">
+<div class="products" style="margin-top: 130px">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
