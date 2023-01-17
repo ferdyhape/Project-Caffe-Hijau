@@ -6,10 +6,7 @@ describe('template spec', () => {
             console.log('Cypress detected uncaught exception: ', err);
             return false;
         });
-        cy.visit('/')
-        cy.contains('Login').click()
-        cy.get(':nth-child(5) > .small').click()
-        cy.url().should('contain', '/register')
+        cy.visit('/register')
     })
 
     //TC-001
@@ -24,5 +21,17 @@ describe('template spec', () => {
         cy.get(':nth-child(4) > .small').contains('Forgot Password?')
         cy.get(':nth-child(5) > .small').contains('Already have an account? Login!')
         cy.get('.d-none').should('be.visible')
+    })
+
+    //TC-002
+    it('user can register with all field filled correctly', () => {
+        cy.get('.user > :nth-child(2) > .form-control').type('Atmayanti Cantik')
+        cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
+        cy.get('.mb-3 > .form-control').type('Patmayanti1-')
+        cy.get('.row > :nth-child(2) > .form-control').type('Patmayanti1-')
+        cy.get('.btn-primary').contains('Register Account').click()
+
+        cy.get('.alert').contains('Registration is successful, please login')
+        cy.url().should('contain', '/login')
     })
 })
