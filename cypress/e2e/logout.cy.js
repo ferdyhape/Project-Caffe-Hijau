@@ -22,4 +22,17 @@ describe('logout scenario', () => {
         cy.get('#login-btn').contains('Login').should('not.be.disabled')
     })
 
+    //TC-002
+    it('admin can logout', () => {
+        cy.get(':nth-child(2) > .form-control').type('ferdyhahan5@gmail.com')
+        cy.get(':nth-child(3) > .form-control').type('password')
+        cy.get('.btn-primary').contains('Login').click()
+
+        cy.url().should('contain', '/')
+        cy.contains('Ferdy Hahan Pradana').click()
+        cy.get('form > .dropdown-item').contains('Logout').click()
+
+        cy.url().should('contain', '/')
+        cy.get('#login-btn').contains('Login').should('not.be.disabled')
+    })
 })
