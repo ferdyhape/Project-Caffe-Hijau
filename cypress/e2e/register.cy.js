@@ -34,4 +34,12 @@ describe('template spec', () => {
         cy.get('.alert').contains('Registration is successful, please login')
         cy.url().should('contain', '/login')
     })
+
+    //TC-003
+    it('user can not register with empty field name', () => {
+        cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
+        cy.get('.mb-3 > .form-control').type('Patmayanti1-')
+        cy.get('.row > :nth-child(2) > .form-control').type('Patmayanti1-')
+        cy.get('.btn-primary').contains('Register Account').click()
+    })
 })
