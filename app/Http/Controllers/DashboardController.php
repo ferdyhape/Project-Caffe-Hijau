@@ -6,6 +6,7 @@ use App\Models\item;
 use App\Models\item_category;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\User;
 
 class DashboardController extends Controller
@@ -17,6 +18,7 @@ class DashboardController extends Controller
             "itemCount" => item::all()->count(),
             "categoryCount" => item_category::all()->count(),
             "userCount" => User::all()->count(),
+            "bannerCount" => Banner::all()->count(),
         ]);
     }
     public function table()

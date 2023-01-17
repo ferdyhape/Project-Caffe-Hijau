@@ -46,7 +46,7 @@ class CategoryController extends Controller
 
         item_category::create($dataNewCategory);
 
-        return redirect('/dashboard/category')->with('success', 'New category added successfully');
+        return redirect('/dashboard/category')->with('toast_success', 'Data category successfully added');
     }
 
     /**
@@ -91,9 +91,9 @@ class CategoryController extends Controller
         $findCategory->description = $UpdateNewCategory['description'];
         $findCategory->save();
 
-        $request->session()->flash('success', 'Category has been updated');
+        $request->session();
 
-        return redirect('/dashboard/category');
+        return redirect('/dashboard/category')->with('toast_success', 'Data category successfully updated');
     }
 
     /**
@@ -104,7 +104,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        // dd($id);
         item_category::destroy($id);
-        return redirect('dashboard/category')->with('success', 'Data category deleted successfully');
+        return redirect('dashboard/category')->with('toast_success', 'Data category successfully deleted');
     }
 }

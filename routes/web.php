@@ -28,13 +28,19 @@ Route::get('/tes', function () {
     ]);
 })->middleware('auth');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/', [GeneralPageController::class, 'index'])->name('index');
-    Route::get('/about', [GeneralPageController::class, 'about'])->name('about');
-    Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact');
-    Route::get('/product', [GeneralPageController::class, 'product'])->name('product');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/', [GeneralPageController::class, 'index'])->name('index');
+//     Route::get('/about', [GeneralPageController::class, 'about'])->name('about');
+//     Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact');
+//     Route::get('/product', [GeneralPageController::class, 'product'])->name('product');
+//     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// });
+
+Route::get('/', [GeneralPageController::class, 'index'])->name('index');
+Route::get('/about', [GeneralPageController::class, 'about'])->name('about');
+Route::get('/contact', [GeneralPageController::class, 'contact'])->name('contact');
+Route::get('/product', [GeneralPageController::class, 'product'])->name('product');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');

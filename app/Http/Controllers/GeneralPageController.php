@@ -6,6 +6,7 @@ use App\Models\item;
 use Illuminate\Http\Request;
 use App\Models\item_category;
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 
 class GeneralPageController extends Controller
 {
@@ -14,6 +15,7 @@ class GeneralPageController extends Controller
         return view('client-side.index', [
             'title' => 'Home',
             'item' => item::orderBy('created_at', 'desc')->paginate(3),
+            'banner' => Banner::all(),
         ]);
     }
 

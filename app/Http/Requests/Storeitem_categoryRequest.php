@@ -25,7 +25,7 @@ class Storeitem_categoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
-            'description' => 'max:255',
+            'description' => 'nullable|string|max:255',
         ];
     }
     public function messages()

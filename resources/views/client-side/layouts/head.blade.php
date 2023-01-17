@@ -5,6 +5,8 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
     rel="stylesheet">
 
+<link rel="icon" type="image/png" href="{{ asset('assets/corp-assets/logo/logo3.png') }}" />
+
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="{{ URL::asset('assets/fontawesome-free-6.2.1-web/css/all.min.css'); }}">
 <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap-5.0.2-dist/css/bootstrap.min.css'); }}">
