@@ -47,10 +47,18 @@ describe('login scenario', () => {
     //     cy.get('.alert').contains('Login Failed')
     // })
 
-    //TC-004
-    it('user can not login using wrong email', () => {
+    // //TC-004
+    // it('user can not login using wrong email', () => {
+    //     cy.get(':nth-child(2) > .form-control').type('suyatno1@gmail.com')
+    //     cy.get(':nth-child(3) > .form-control').type('password')
+    //     cy.get('.btn-primary').contains('Login').click()
+    //     cy.get('.alert').contains('Login Failed')
+    // })
+
+    //TC-005
+    it('user can not login using wrong email and password', () => {
         cy.get(':nth-child(2) > .form-control').type('suyatno1@gmail.com')
-        cy.get(':nth-child(3) > .form-control').type('password')
+        cy.get(':nth-child(3) > .form-control').type('password1')
         cy.get('.btn-primary').contains('Login').click()
         cy.get('.alert').contains('Login Failed')
     })
