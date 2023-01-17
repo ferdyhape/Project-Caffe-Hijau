@@ -50,4 +50,12 @@ describe('template spec', () => {
         cy.get('.row > :nth-child(2) > .form-control').type('Patmayanti1-')
         cy.get('.btn-primary').contains('Register Account').click()
     })
+
+    //TC-005
+    it('user can not register with empty field password', () => {
+        cy.get('.user > :nth-child(2) > .form-control').type('Atmayanti Cantik')
+        cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
+        cy.get('.row > :nth-child(2) > .form-control').type('Patmayanti1-')
+        cy.get('.btn-primary').contains('Register Account').click()
+    })
 })
