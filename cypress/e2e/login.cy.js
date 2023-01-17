@@ -39,10 +39,18 @@ describe('login scenario', () => {
     //     cy.get('.best-features > .container > .row > .col-md-12 > .section-heading > h2').contains('About Brownies Santri')
     // })
 
-    //TC-003
-    it('user can not login using wrong password', () => {
-        cy.get(':nth-child(2) > .form-control').type('suyatno@gmail.com')
-        cy.get(':nth-child(3) > .form-control').type('password1')
+    // //TC-003
+    // it('user can not login using wrong password', () => {
+    //     cy.get(':nth-child(2) > .form-control').type('suyatno@gmail.com')
+    //     cy.get(':nth-child(3) > .form-control').type('password1')
+    //     cy.get('.btn-primary').contains('Login').click()
+    //     cy.get('.alert').contains('Login Failed')
+    // })
+
+    //TC-004
+    it('user can not login using wrong email', () => {
+        cy.get(':nth-child(2) > .form-control').type('suyatno1@gmail.com')
+        cy.get(':nth-child(3) > .form-control').type('password')
         cy.get('.btn-primary').contains('Login').click()
         cy.get('.alert').contains('Login Failed')
     })
