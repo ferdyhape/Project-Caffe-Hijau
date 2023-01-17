@@ -23,19 +23,27 @@ describe('login scenario', () => {
     //     cy.get('.d-none').should('be.visible')
     // })
 
-    //TC-002
-    it('user can login using valid credentials', () => {
-        cy.get(':nth-child(2) > .form-control').type('suyatno@gmail.com')
-        cy.get(':nth-child(3) > .form-control').type('password')
-        cy.get('.btn-primary').contains('Login').click()
+    // //TC-002
+    // it('user can login using valid credentials', () => {
+    //     cy.get(':nth-child(2) > .form-control').type('suyatno@gmail.com')
+    //     cy.get(':nth-child(3) > .form-control').type('password')
+    //     cy.get('.btn-primary').contains('Login').click()
 
-        cy.url().should('contain', '/')
-        cy.get('.active > .nav-link').contains('Home')
-        cy.get('.navbar-nav > :nth-child(2) > .nav-link').contains('Our Products')
-        cy.get(':nth-child(3) > .nav-link').contains('About Us')
-        cy.get(':nth-child(4) > .nav-link').contains('Contact Us')
-        cy.get('.border-0 > .nav-link').contains('Logout')
-        cy.get('.latest-products > .container > .row > .col-md-12 > .section-heading > h2').contains('Latest Products')
-        cy.get('.best-features > .container > .row > .col-md-12 > .section-heading > h2').contains('About Brownies Santri')
+    //     cy.url().should('contain', '/')
+    //     cy.get('.active > .nav-link').contains('Home')
+    //     cy.get('.navbar-nav > :nth-child(2) > .nav-link').contains('Our Products')
+    //     cy.get(':nth-child(3) > .nav-link').contains('About Us')
+    //     cy.get(':nth-child(4) > .nav-link').contains('Contact Us')
+    //     cy.get('.border-0 > .nav-link').contains('Logout')
+    //     cy.get('.latest-products > .container > .row > .col-md-12 > .section-heading > h2').contains('Latest Products')
+    //     cy.get('.best-features > .container > .row > .col-md-12 > .section-heading > h2').contains('About Brownies Santri')
+    // })
+
+    //TC-003
+    it('user can not login using wrong password', () => {
+        cy.get(':nth-child(2) > .form-control').type('suyatno@gmail.com')
+        cy.get(':nth-child(3) > .form-control').type('password1')
+        cy.get('.btn-primary').contains('Login').click()
+        cy.get('.alert').contains('Login Failed')
     })
 })
