@@ -40,9 +40,9 @@
 
                     </div>
                     <div class="form-group">
-                        <select class="form-control @error('Category') is-invalid @enderror" id="category_id"
+                        <select class="form-control @error('category_id') is-invalid @enderror" id="category_id"
                             name="category_id" required>
-                            <option>Category</option>
+                            <option value="0">Select Category</option>
                             @foreach($category as $c)
                             <option value="{{ $c->id }}">{{ $c->name }}</option>
                             @endforeach

@@ -28,6 +28,7 @@ class UpdateitemRequest extends FormRequest
             'price' => 'required|integer',
             'category_id' => 'required|integer',
             'description' => 'nullable|string|max:255',
+            'oldPicture' => 'required|mimes:png,jpg,jpeg|max:2048',
             'picture' => 'mimes:png,jpg,jpeg|max:2048',
         ];
     }

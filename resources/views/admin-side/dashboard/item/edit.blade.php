@@ -43,9 +43,6 @@
                     <div class="form-group">
                         <select class="form-control @error('category_id') is-invalid @enderror" id="category_id"
                             name="category_id">
-                            @if(is_null($item->item_category))
-                            <option selected class="text-danger">Select categories</option>
-                            @endif
                             @foreach($category as $c)
                             @if( $item->category_id == $c->id)
                             <option value="{{ $c->id }}" selected>{{ $c->name }}</option>

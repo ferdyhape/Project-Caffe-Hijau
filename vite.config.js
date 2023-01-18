@@ -13,6 +13,8 @@ export default defineConfig({
             refresh: [
                 'resources/views/**',
                 'public/**',
+                'app/Http/Controllers/**',
+                'app/Models/**',
             ],
         }),
     ],
