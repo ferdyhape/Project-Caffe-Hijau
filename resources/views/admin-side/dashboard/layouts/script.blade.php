@@ -78,6 +78,19 @@
         }
     }
     
+    $('body').on('click', '.view-image', function(){
+        var image_path = $(this).data('image_path');
+        var name = $(this).data('name').toUpperCase();
+
+        Swal.fire({
+            title: 'Hello Admin!',
+            text: `This is a image of a ${name}`,
+            imageUrl: `/storage/${image_path}`,
+            imageWidth: '70%',
+            imageAlt: 'Product-Image',
+        })
+    });
+
     $('body').on('click', '.delete-confirm', function () {
 
         let id = $(this).data('id');

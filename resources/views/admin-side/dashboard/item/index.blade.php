@@ -35,58 +35,30 @@
                             <td>{{ $i->item_category->name }}</td>
                             <td>{{ $i->description }}</td>
                             <td class="d-flex justify-content-around">
-                                <button class="badge bg-success border-0 text-white p-2 mx-2" data-bs-toggle="modal"
-                                    data-bs-target="#imageModal-{{$i->id}}"><i class="fas fa-fw fa-images"
-                                        style="font-size: 18px;"></i></button>
+                                <button class="badge bg-success border-0 text-white p-2 mx-2 view-image"
+                                    data-image_path="{{$i->picture}}" data-name="{{ $i->name }}"><i
+                                        class="fas fa-fw fa-images" style="font-size: 18px;"></i></button>
                                 <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
                                     data-bs-target="#editModal-{{$i->id}}"><i class="fas fa-fw fa-pencil"
                                         style="font-size: 18px;"></i></button>
                                 <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$i->id}}"
                                     data-name="{{$i->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
+
                                 <form action="item/{{ $i->id }}" id="form-delete" method="POST" style="display: none">
                                     @method('delete')
                                     @csrf
                                     <input type="submit" class="" value="Delete">
                                 </form>
 
-                                <!-- Modal Image -->
-                                <div class="modal fade" id="imageModal-{{$i->id}}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Image of
-                                                    <strong>[{{$i->name }}]</strong>
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="text-center">
-                                                    @if (is_null($i->picture))
-                                                    <p>Image not included</p>
-                                                    @else
-                                                    <img src="{{ asset('storage/'. $i->picture) }}" alt="item-image"
-                                                        width="70%">
-                                                    @endif
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Modal Edit -->
                                 <div class="modal fade" id="editModal-{{$i->id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <div class="modal-content">
+                                        <div class="modal-content border-0 shadow">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Item
+                                                <h5 class="modal-title fw-bold" id="exampleModalLabel">
+                                                    Edit Item
                                                     <strong>[{{$i->name }}]</strong>
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -172,8 +144,10 @@
                                                     <img class="img-preview-edit img-fluid mt-1" id="img-preview-edit">
 
                                                     @else
-                                                    <button type="button" class="btn btn-primary"
-                                                        onclick="editPicture()">Change Image</button>
+                                                    <div class="d-grid gap-2">
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="editPicture()">Change Image</button>
+                                                    </div>
 
                                                     <div class="input-group my-3">
                                                         <input type="file" class="form-control" id="newpicture"
@@ -210,11 +184,12 @@
                     </tbody>
                 </table>
 
+
                 <!-- Modal Create -->
                 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog ">
-                        <div class="modal-content">
+                        <div class="modal-content border-0 shadow">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"

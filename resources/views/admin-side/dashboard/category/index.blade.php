@@ -54,7 +54,7 @@
                                 <div class="modal fade" id="editModal-{{$c->id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <div class="modal-content">
+                                        <div class="modal-content border-0 shadow">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Category
                                                     <strong>[{{$c->name }}]</strong>
@@ -111,7 +111,7 @@
                 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog ">
-                        <div class="modal-content">
+                        <div class="modal-content border-0 shadow">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"

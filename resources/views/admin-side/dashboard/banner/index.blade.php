@@ -39,9 +39,9 @@
                             <td>{{ $b->offer }}</td>
                             <td>{{ $b->fzOffer }}px</td>
                             <td class="d-flex justify-content-around">
-                                <button class="badge bg-success border-0 text-white p-2 mx-2" data-bs-toggle="modal"
-                                    data-bs-target="#imageModal-{{$b->id}}"><i class="fas fa-fw fa-image"
-                                        style="font-size: 18px;"></i></button>
+                                <button class="badge bg-success border-0 text-white p-2 mx-2 view-image"
+                                    data-image_path="{{$b->picture}}" data-name="{{ $b->name }}"><i
+                                        class="fas fa-fw fa-images" style="font-size: 18px;"></i></button>
                                 <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
                                     data-bs-target="#editModal-{{$b->id}}"><i class="fas fa-fw fa-pencil"
                                         style="font-size: 18px;"></i></button>
@@ -53,42 +53,11 @@
                                     @csrf
                                     <input type="submit" class="" value="Delete">
                                 </form>
-                                <!-- Modal Image -->
-                                <div class="modal fade" id="imageModal-{{$b->id}}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Image of
-                                                    <strong>[{{$b->name }}]</strong>
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="text-center">
-                                                    @if (is_null($b->picture))
-                                                    <p>Image not included</p>
-                                                    @else
-                                                    <img src="{{ asset('storage/'. $b->picture) }}" alt="item-image"
-                                                        width="70%">
-                                                    @endif
-
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- Modal Edit -->
                                 <div class="modal fade" id="editModal-{{$b->id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <div class="modal-content">
+                                        <div class="modal-content border-0 shadow">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Item
                                                     <strong>[{{$b->name }}]</strong>
@@ -162,9 +131,10 @@
                                                         </div>
                                                         @enderror
                                                     </div>
-                                                    <button type="button" class="btn btn-primary"
-                                                        onclick="editPicture()">Change Image</button>
-
+                                                    <div class="d-grid gap-2">
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="editPicture()">Change Image</button>
+                                                    </div>
                                                     <div class="input-group my-3">
                                                         <input type="file" class="form-control" id="newpicture"
                                                             name="picture" onchange="previewImageEdit()"
@@ -200,7 +170,7 @@
                 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog ">
-                        <div class="modal-content">
+                        <div class="modal-content border-0 shadow">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
