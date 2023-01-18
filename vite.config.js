@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/views/**',
                 'public/**',
                 'app/Http/Controllers/**',
+                'app/Http/Requests/**',
                 'app/Models/**',
             ],
         }),

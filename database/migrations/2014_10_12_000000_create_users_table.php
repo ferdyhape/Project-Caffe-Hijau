@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('level');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

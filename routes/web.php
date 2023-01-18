@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralPageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +69,5 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/item', ItemController::class);
     Route::resource('/category', CategoryController::class);
     Route::resource('/banner', BannerController::class);
+    Route::resource('/user', UserController::class);
 });

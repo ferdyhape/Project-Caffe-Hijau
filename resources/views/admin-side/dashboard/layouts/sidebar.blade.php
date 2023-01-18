@@ -30,6 +30,11 @@
             <i class="fas fa-fw fa-images"></i>
             <span>Banner</span></a>
     </li>
+    <li class="nav-item {{ ($title === 'User Management' ? 'active' : '' ) }}">
+        <a class="nav-link py-2 px-4" href="{{ url('dashboard/user') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>User</span></a>
+    </li>
 
 
     <!-- Divider -->
