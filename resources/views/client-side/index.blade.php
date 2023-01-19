@@ -8,13 +8,17 @@
     <div class="banner-item"
       style="background-image: radial-gradient(circle, rgba(0, 0, 0, 0.7903536414565826) 0%, rgba(0, 0, 0, 0.5186449579831933) 100%), url(storage/{{ $b->picture }});">
       <div class="text-content">
+        @if (is_null($b->attention))
+        @else
         <h4 class="btn px-4 attention" style="font-size: {{ $b->fzAttention }}px;">{{ $b->attention }}</h4>
         <h2 style=" font-size: {{ $b->fzOffer }}px;">{{ $b->offer }}</h2>
+        @endif
       </div>
     </div>
     @endforeach
   </div>
 </div>
+
 <!-- Banner Ends Here -->
 <div class="latest-products">
   <div class="container">
