@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Socialite;
 use Illuminate\Validation\Rules\Password;
+use Exception;
 
 class AuthController extends Controller
 {
@@ -16,6 +18,33 @@ class AuthController extends Controller
         return view('auth.login', [
             'title' => 'Login Page',
         ]);
+    }
+    public function redirectToGoole()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+            $finduser = User::where('google_id', $user->id)->first();
+            if ($finduser) {
+                Auth::login($finduser);
+                return redirect('/')->with('success', 'Welcome back, ' . $finduser->name);
+            } else {
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'level' => 'user',
+                    'password'  => '0',
+                    'google_id' => $user->id
+                ]);
+                Auth::login($newUser);
+                return redirect('/')->with('success', 'Welcome, ' . $newUser->name);
+            }
+        } catch (Exception $e) {
+            return redirect('/login');
+        }
     }
     public function register()
     {
@@ -71,7 +100,7 @@ class AuthController extends Controller
         User::create($validatedData);
         // dd($validatedData);
 
-        $request->session()->flash('success', 'Registration is successful, please login');
+        $request->session()->with('success', 'Registration is successful, please login');
 
         return redirect('/login');
     }

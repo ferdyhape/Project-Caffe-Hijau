@@ -8,7 +8,7 @@
                         alt="" width="40" height="40">
                 </div>
                 <div class="text-brand ps-2 my-auto">
-                    <h6>Brownies<br> <em>Santri</em></h6>
+                    <h6 id="text-brand-must-none">Brownies<br> <em>Santri</em></h6>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -68,8 +68,8 @@
                     @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link btn px-4 py-2 rounded-pill shadow-sm" id="login-btn" style=""
-                            href="{{ url('/login')}}">Login</a>
+                        <a class="nav-link btn px-4 py-2 rounded-pill shadow-sm" id="login-btn"
+                            style="background-color: white; color: #098B67" href="{{ url('/login')}}">Login</a>
                     </li>
                     @endif
                 </ul>

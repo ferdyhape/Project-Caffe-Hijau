@@ -8,8 +8,7 @@
 </head>
 
 @if ( in_array(Route::current()->getName(), array('dashboardlogin', 'dashboardregister', 'dashboardforgorpassword',
-'login', 'register'),
-true) ) {
+'login', 'register'), true) ) {
 
 @yield('content')
 @include('admin-side.dashboard.layouts.script')

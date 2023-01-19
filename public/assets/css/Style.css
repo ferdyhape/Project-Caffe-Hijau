@@ -1124,3 +1124,10 @@ footer .inner-content p a {
         bottom: 0;
     }
 }
+
+@media (max-width: 285px) {
+
+    #text-brand-must-none {
+        display: none !important;
+    }
+}
