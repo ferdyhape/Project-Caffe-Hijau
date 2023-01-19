@@ -35,6 +35,11 @@
                             <td>{{ $i->item_category->name }}</td>
                             <td>{{ $i->description }}</td>
                             <td class="d-flex justify-content-around">
+                                <form action="item/{{ $i->id }}" id="form-delete" method="POST" style="display: none">
+                                    @method('delete')
+                                    @csrf
+                                    <input type="submit" class="" value="Delete">
+                                </form>
                                 <button class="badge bg-success border-0 text-white p-2 mx-2 view-image"
                                     data-image_path="{{$i->picture}}" data-name="{{ $i->name }}"><i
                                         class="fas fa-fw fa-images" style="font-size: 18px;"></i></button>
@@ -45,11 +50,6 @@
                                     data-name="{{$i->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
 
-                                <form action="item/{{ $i->id }}" id="form-delete" method="POST" style="display: none">
-                                    @method('delete')
-                                    @csrf
-                                    <input type="submit" class="" value="Delete">
-                                </form>
 
                                 <!-- Modal Edit -->
                                 <div class="modal fade" id="editModal-{{$i->id}}" tabindex="-1"

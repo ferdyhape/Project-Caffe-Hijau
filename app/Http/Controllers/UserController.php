@@ -128,11 +128,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        // dd($user);
         if ($user->picture) {
             File::delete('storage/' . $user->picture);
         }
 
         $user->delete();
-        return redirect('dashboard/User')->with('toast_success', 'Data User successfully deleted');
+        return redirect('dashboard/user')->with('toast_success', 'Data User successfully deleted');
     }
 }

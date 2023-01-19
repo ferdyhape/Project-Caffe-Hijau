@@ -11,6 +11,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Level</th>
@@ -20,6 +21,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Level</th>
@@ -30,6 +32,7 @@
                     <tbody>
                         @foreach ($user as $u)
                         <tr>
+                            <td>{{ $u->id }}</td>
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->email }}</td>
                             <td>{{ $u->level }}</td>
@@ -43,9 +46,9 @@
                                         style="font-size: 18px;"></i></button>
                                 <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$u->id}}"
                                     data-name="{{$u->name}}"><i class="fas fa-fw fa-trash text-white"
-                                        style="font-size: 18px;"></i></button>
-
-                                <form action="user/{{ $u->id }}" id="form-delete" method="POST" style="display: none">
+                                        style="font-size: 18px;"></i>{{$u->id}}</button>
+                                <form action="user/{{ $u->id }}" id="form-delete-{{ $u->id }}" method="POST"
+                                    style="display: none">
                                     @method('delete')
                                     @csrf
                                     <input type="submit" class="" value="Delete">
@@ -174,7 +177,6 @@
                                                     </div>
                                                     @endif
                                             </div>
-
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
@@ -184,8 +186,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </td>
                         </tr>
                         @endforeach
@@ -209,7 +209,7 @@
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control form-control-user @error('name') is-invalid @enderror"
-                                            name="name" placeholder="Name" required autofocus>
+                                            name="name" placeholder="Name" required value="{{old('name')}}" autofocus>
                                         @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -219,7 +219,7 @@
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control form-control-user @error('email') is-invalid @enderror"
-                                            name="email" placeholder="Email" required autofocus>
+                                            name="email" placeholder="Email" required>
                                         @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
