@@ -44,7 +44,7 @@
                                     data-name="{{$c->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
 
-                                <form action="category/{{ $c->id }}" id="form-delete" method="POST"
+                                <form action="category/{{ $c->id }}" id="form-delete-{{ $c->id }}" method="POST"
                                     style="display: none">
                                     @method('delete')
                                     @csrf

@@ -35,7 +35,8 @@
                             <td>{{ $i->item_category->name }}</td>
                             <td>{{ $i->description }}</td>
                             <td class="d-flex justify-content-around">
-                                <form action="item/{{ $i->id }}" id="form-delete" method="POST" style="display: none">
+                                <form action="item/{{ $i->id }}" id="form-delete-{{ $i->id }}" method="POST"
+                                    style="display: none">
                                     @method('delete')
                                     @csrf
                                     <input type="submit" class="" value="Delete">

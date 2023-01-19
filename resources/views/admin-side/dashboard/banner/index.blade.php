@@ -48,7 +48,8 @@
                                 <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$b->id}}"
                                     data-name="{{$b->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
-                                <form action="banner/{{ $b->id }}" id="form-delete" method="POST" style="display: none">
+                                <form action="banner/{{ $b->id }}" id="form-delete-{{ $b->id }}" method="POST"
+                                    style="display: none">
                                     @method('delete')
                                     @csrf
                                     <input type="submit" class="" value="Delete">
