@@ -8,9 +8,12 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5">
+                        <img src="{{asset('assets/corp-assets/illustration/register.jpg')}}" class="bg-login-register"
+                            alt="">
+                    </div>
                     <div class="col-lg-7">
-                        <div class="p-5">
+                        <div class="col row px-4 py-5 mx-auto">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
@@ -56,19 +59,15 @@
                                 <button type="submit" class="btn btn-primary btn-user btn-block">Register
                                     Account</button>
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                <a href="{{ url('login') }}" class="btn btn-google btn-user btn-block">
+                                    </i> Already have an account? Login!
                                 </a>
                             </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="{{ url('login') }}">Already have an account? Login!</a>
+                            <div class="my-2">
+                                <div class="text-center">
+                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
