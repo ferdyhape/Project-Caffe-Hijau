@@ -65,7 +65,7 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        return back()->with('LoginFailed', 'Login Failed');
+        return back()->with('toast_error', 'Login Failed');
     }
     public function logout(Request $request)
     {
