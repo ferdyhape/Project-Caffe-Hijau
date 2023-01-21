@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use Socialite;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Socialite;
 use Illuminate\Validation\Rules\Password;
-use Exception;
 
 class AuthController extends Controller
 {
@@ -28,6 +29,7 @@ class AuthController extends Controller
         try {
             $user = Socialite::driver('google')->user();
             $finduser = User::where('google_id', $user->id)->first();
+
             if ($finduser) {
                 Auth::login($finduser);
                 return redirect('/')->with('success', 'Welcome back, ' . $finduser->name);
@@ -36,7 +38,7 @@ class AuthController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'level' => 'user',
-                    'password'  => '0',
+                    'password'  => Hash::make(Str::random(10)),
                     'google_id' => $user->id
                 ]);
                 Auth::login($newUser);
