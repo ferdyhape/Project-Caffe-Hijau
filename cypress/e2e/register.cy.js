@@ -23,7 +23,7 @@ describe('template spec', () => {
         cy.get('.d-none').should('be.visible')
     })
 
-    //TC-002
+    // TC-002
     it('user can register with all field filled correctly', () => {
         cy.get('.user > :nth-child(2) > .form-control').type('Atmayanti Cantik')
         cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
@@ -65,5 +65,15 @@ describe('template spec', () => {
         cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
         cy.get('.row > :nth-child(1) > .form-control').type('Patmayanti1-')
         cy.get('.btn-primary').contains('Register Account').click()
+    })
+
+    //TC-007
+    it('user can not register using registered email', () => {
+        cy.get('.user > :nth-child(2) > .form-control').type('Atmayanti')
+        cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
+        cy.get('.row > :nth-child(1) > .form-control').type('Patmayanti1-')
+        cy.get('.row > :nth-child(2) > .form-control').type('Patmayanti1-')
+        cy.get('.btn-primary').contains('Register Account').click()
+        cy.get('strong').contains('The email has already been taken.')
     })
 })
