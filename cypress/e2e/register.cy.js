@@ -96,4 +96,14 @@ describe('template spec', () => {
         cy.get('.btn-primary').contains('Register Account').click()
         cy.get('.mb-3 > .invalid-feedback > strong').contains('The password must contain at least one uppercase and one lowercase letter.')
     })
+
+    //TC-010
+    it('user can not register using password without uppercase and lowercase letter', () => {
+        cy.get('.user > :nth-child(2) > .form-control').type('Atmayanti')
+        cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
+        cy.get('.row > :nth-child(1) > .form-control').type('Aa1111')
+        cy.get('.row > :nth-child(2) > .form-control').type('Aa1111')
+        cy.get('.btn-primary').contains('Register Account').click()
+        cy.get('.mb-3 > .invalid-feedback > strong').contains('The password must contain at least one uppercase and one lowercase letter.')
+    })
 })
