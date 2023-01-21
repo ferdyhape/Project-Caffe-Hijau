@@ -48,8 +48,16 @@
             imgPreview.src = oFREvent.target.result;
         }
     }
-    function previewImageEdit() {
-        const card = document.querySelector('#card-preview');
+    function editPicture(x) {
+        var x = document.getElementById(`newpicture-${x}`);
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+    }
+    function previewImageEdit(x) {
+        const card = document.getElementById(`card-preview-${x}`);
         
         if (card.style.display === "none") {
         card.style.display = "block";
@@ -57,8 +65,8 @@
         card.style.display = "none";
         }
         
-        const image = document.querySelector('#newpicture');
-        const imgPreview = document.querySelector('.img-preview-edit')
+        const image = document.getElementById(`newpicture-${x}`);
+        const imgPreview = document.getElementById(`img-preview-edit-${x}`)
         
         imgPreview.style.display = 'block';
         
@@ -68,14 +76,6 @@
         oFReader.onload = function(oFREvent) {
         imgPreview.src = oFREvent.target.result;
     }
-    }
-    function editPicture() {
-        var x = document.getElementById("newpicture");
-        if (x.style.display === "none") {
-        x.style.display = "block";
-        } else {
-        x.style.display = "none";
-        }
     }
     
     $('body').on('click', '.view-image', function(){

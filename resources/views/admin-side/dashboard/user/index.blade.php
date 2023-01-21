@@ -4,7 +4,8 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary my-auto">List of Users</h6>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add user</button>
+            <button class="btn text-white bg-success" data-bs-toggle="modal" data-bs-target="#createModal">Add
+                user</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -46,7 +47,7 @@
                                         style="font-size: 18px;"></i></button>
                                 <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$u->id}}"
                                     data-name="{{$u->name}}"><i class="fas fa-fw fa-trash text-white"
-                                        style="font-size: 18px;"></i>{{$u->id}}</button>
+                                        style="font-size: 18px;"></i></button>
                                 <form action="user/{{ $u->id }}" id="form-delete-{{ $u->id }}" method="POST"
                                     style="display: none">
                                     @method('delete')
@@ -62,7 +63,7 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title fw-bold" id="exampleModalLabel">
                                                     Edit user
-                                                    <strong>[{{$u->name }}]</strong>
+                                                    {{$u->name }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -158,21 +159,23 @@
 
                                                     @else
                                                     <button type="button" class="btn btn-primary"
-                                                        onclick="editPicture()">Change Image</button>
+                                                        onclick="editPicture({{$u->id}})">Change Image</button>
 
                                                     <div class="input-group my-3">
-                                                        <input type="file" class="form-control" id="newpicture"
-                                                            name="picture" onchange="previewImageEdit()"
+                                                        <input type="file" class="form-control"
+                                                            id="newpicture-{{$u->id}}" name="picture"
+                                                            onchange="previewImageEdit({{$u->id}})"
                                                             style="display: none">
                                                     </div>
 
-                                                    <div class="card-body" id="card-preview" style="display: none">
+                                                    <div class="card-body" id="card-preview-{{$i->id}}"
+                                                        style="display: none">
                                                         <div class="card-header p-0">
                                                             Preview new Image
                                                         </div>
                                                         <div class="card-body p-0">
-                                                            <img class="card-img-top img-preview-edit img-fluid mt-1"
-                                                                alt="new-image" id="img-preview-edit">
+                                                            <img class="card-img-top img-fluid mt-1" alt="new-image"
+                                                                id="img-preview-edit-{{$u->id}}">
                                                         </div>
                                                     </div>
                                                     @endif

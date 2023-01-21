@@ -5,7 +5,8 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary my-auto">List of Categories</h6>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add Category</button>
+            <button class="btn text-white bg-success" data-bs-toggle="modal" data-bs-target="#createModal">Add
+                Category</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -57,7 +58,7 @@
                                         <div class="modal-content border-0 shadow">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Category
-                                                    <strong>[{{$c->name }}]</strong>
+                                                    {{$c->name }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>

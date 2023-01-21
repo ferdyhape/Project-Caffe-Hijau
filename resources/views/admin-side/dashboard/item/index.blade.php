@@ -4,7 +4,8 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary my-auto">Item List</h6>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add Item</button>
+            <button class="btn text-white bg-success" data-bs-toggle="modal" data-bs-target="#createModal">Add
+                Item</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -60,7 +61,7 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title fw-bold" id="exampleModalLabel">
                                                     Edit Item
-                                                    <strong>[{{$i->name }}]</strong>
+                                                    {{$i->name }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -147,22 +148,24 @@
                                                     @else
                                                     <div class="d-grid gap-2">
                                                         <button type="button" class="btn btn-primary"
-                                                            onclick="editPicture()">Change Image</button>
+                                                            onclick="editPicture({{$i->id}})">Change Image</button>
                                                     </div>
 
                                                     <div class="input-group my-3">
-                                                        <input type="file" class="form-control" id="newpicture"
-                                                            name="picture" onchange="previewImageEdit()"
+                                                        <input type="file" class="form-control"
+                                                            id="newpicture-{{$i->id}}" name="picture"
+                                                            onchange="previewImageEdit({{$i->id}})"
                                                             style="display: none">
                                                     </div>
 
-                                                    <div class="card-body" id="card-preview" style="display: none">
+                                                    <div class="card-body" id="card-preview-{{$i->id}}"
+                                                        style="display: none">
                                                         <div class="card-header p-0">
                                                             Preview new Image
                                                         </div>
                                                         <div class="card-body p-0">
-                                                            <img class="card-img-top img-preview-edit img-fluid mt-1"
-                                                                alt="new-image" id="img-preview-edit">
+                                                            <img class="card-img-top img-fluid mt-1" alt="new-image"
+                                                                id="img-preview-edit-{{$i->id}}">
                                                         </div>
                                                     </div>
                                                     @endif
