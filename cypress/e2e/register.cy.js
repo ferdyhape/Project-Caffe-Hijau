@@ -74,6 +74,16 @@ describe('template spec', () => {
         cy.get('.row > :nth-child(1) > .form-control').type('Patmayanti1-')
         cy.get('.row > :nth-child(2) > .form-control').type('Patmayanti1-')
         cy.get('.btn-primary').contains('Register Account').click()
-        cy.get('strong').contains('The email has already been taken.')
+        cy.get(':nth-child(3) > .invalid-feedback > strong').contains('The email has already been taken.')
+    })
+
+    //TC-008
+    it('user can not register using password less than 6 character', () => {
+        cy.get('.user > :nth-child(2) > .form-control').type('Atmayanti')
+        cy.get(':nth-child(3) > .form-control').type('Atmayanti@gmail.com')
+        cy.get('.row > :nth-child(1) > .form-control').type('11')
+        cy.get('.row > :nth-child(2) > .form-control').type('11')
+        cy.get('.btn-primary').contains('Register Account').click()
+        cy.get('.mb-3 > .invalid-feedback > strong').contains('The password must be at least 6 characters.')
     })
 })
