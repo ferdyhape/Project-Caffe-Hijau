@@ -110,4 +110,12 @@
         
     });
 
+    if (window.matchMedia('(max-width: 768px)').matches)
+    {
+        $("#logoImg").attr("src", "/assets/corp-assets/logo/Logo2.png").attr("width", "150%")
+    }
+    else {
+        $("#logoImg").attr("src", "/assets/corp-assets/logo/logo4.png").attr("width", "75%")
+    }
+
 </script>
