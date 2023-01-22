@@ -7,14 +7,15 @@
                     <img src="{{ asset('assets/corp-assets/logo/Logo2.png') }}" class="bg-white p-0 rounded-circle"
                         alt="" width="40" height="40">
                 </div>
-                <div class="text-brand my-auto">
-                    <h2>Brownies <em>Santri</em></h2>
+                <div class="text-brand ps-2 my-auto">
+                    <h6 id="text-brand-must-none">Brownies<br> <em>Santri</em></h6>
                 </div>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item {{ ($title === 'Home' ? 'active' : '' ) }}">
@@ -23,17 +24,17 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-list {{ ($title === 'Products' ? 'active' : '' ) }}"
-                            href="{{ url('/product')}}">Our
+                            href="{{ url('/product')}}">
                             Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-list {{ ($title === 'About Us' ? 'active' : '' ) }}"
-                            href="{{ url('/about')}}">About Us</a>
+                            href="{{ url('/about')}}">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-list {{ ($title === 'Contact' ? 'active' : '' ) }}"
                             href="{{ url('/contact')}}">Contact
-                            Us</a>
+                        </a>
                     </li>
                     @if (Auth::check())
                     @if (auth()->user()->level == 'admin')
@@ -67,8 +68,8 @@
                     @endif
                     @else
                     <li class="nav-item">
-                        <a class="nav-link btn px-4 py-2 rounded-pill shadow-sm" id="login-btn" style=""
-                            href="{{ url('/login')}}">Login</a>
+                        <a class="nav-link btn px-4 py-2 rounded-pill shadow-sm" id="login-btn"
+                            style="background-color: white; color: #098B67" href="{{ url('/login')}}">Login</a>
                     </li>
                     @endif
                 </ul>

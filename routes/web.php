@@ -8,6 +8,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralPageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::get('/login/google', [AuthController::class, 'redirectToGoole'])->name('loginwithgoogle');
+    Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('loginwithgoogle');
     Route::post('/login', [AuthController::class, 'authenticate']);
     Route::post('/register', [AuthController::class, 'store']);
 });
@@ -68,4 +71,5 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/item', ItemController::class);
     Route::resource('/category', CategoryController::class);
     Route::resource('/banner', BannerController::class);
+    Route::resource('/user', UserController::class);
 });

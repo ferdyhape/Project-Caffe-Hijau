@@ -12103,19 +12103,19 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+    background: url("{{ asset('assets/corp-assets/illustration/login.jpg') }}");
     background-position: center;
     background-size: cover;
 }
 
 .bg-register-image {
-    background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+    background: url("{{ asset('assets/corp-assets/illustration/login.jpg') }}");
     background-position: center;
     background-size: cover;
 }
 
 .bg-password-image {
-    background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
+    background: url("{{ asset('assets/corp-assets/illustration/login.jpg') }}");
     background-position: center;
     background-size: cover;
 }
@@ -12608,4 +12608,9 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
     width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #ccc;
 }

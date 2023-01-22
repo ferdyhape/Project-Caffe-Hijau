@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use Socialite;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +19,34 @@ class AuthController extends Controller
         return view('auth.login', [
             'title' => 'Login Page',
         ]);
+    }
+    public function redirectToGoole()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+            $finduser = User::where('google_id', $user->id)->first();
+
+            if ($finduser) {
+                Auth::login($finduser);
+                return redirect('/')->with('success', 'Welcome back, ' . $finduser->name);
+            } else {
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'level' => 'user',
+                    'password'  => Hash::make(Str::random(10)),
+                    'google_id' => $user->id
+                ]);
+                Auth::login($newUser);
+                return redirect('/')->with('success', 'Welcome, ' . $newUser->name);
+            }
+        } catch (Exception $e) {
+            return redirect('/login');
+        }
     }
     public function register()
     {
@@ -36,7 +67,7 @@ class AuthController extends Controller
             return redirect()->intended('/');
         }
 
-        return back()->with('LoginFailed', 'Login Failed');
+        return back()->with('toast_error', 'Login Failed');
     }
     public function logout(Request $request)
     {
@@ -71,7 +102,7 @@ class AuthController extends Controller
         User::create($validatedData);
         // dd($validatedData);
 
-        $request->session()->flash('success', 'Registration is successful, please login');
+        $request->session()->with('success', 'Registration is successful, please login');
 
         return redirect('/login');
     }

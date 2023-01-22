@@ -48,8 +48,16 @@
             imgPreview.src = oFREvent.target.result;
         }
     }
-    function previewImageEdit() {
-        const card = document.querySelector('#card-preview');
+    function editPicture(x) {
+        var x = document.getElementById(`newpicture-${x}`);
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+    }
+    function previewImageEdit(x) {
+        const card = document.getElementById(`card-preview-${x}`);
         
         if (card.style.display === "none") {
         card.style.display = "block";
@@ -57,8 +65,8 @@
         card.style.display = "none";
         }
         
-        const image = document.querySelector('#newpicture');
-        const imgPreview = document.querySelector('.img-preview-edit')
+        const image = document.getElementById(`newpicture-${x}`);
+        const imgPreview = document.getElementById(`img-preview-edit-${x}`)
         
         imgPreview.style.display = 'block';
         
@@ -69,17 +77,20 @@
         imgPreview.src = oFREvent.target.result;
     }
     }
-    function editPicture() {
-        var x = document.getElementById("newpicture");
-        if (x.style.display === "none") {
-        x.style.display = "block";
-        } else {
-        x.style.display = "none";
-        }
-    }
     
-    $('body').on('click', '.delete-confirm', function () {
+    $('body').on('click', '.view-image', function(){
+        var image_path = $(this).data('image_path');
+        var name = $(this).data('name').toUpperCase();
 
+        Swal.fire({
+            text: `Image of a ${name}`,
+            imageUrl: `/storage/${image_path}`,
+            imageWidth: '70%',
+            imageAlt: 'Product-Image',
+        })
+    });
+
+    $('body').on('click', '.delete-confirm', function () {
         let id = $(this).data('id');
         let name = $(this).data('name').toUpperCase();
 
@@ -93,10 +104,18 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById("form-delete").submit()
+                document.getElementById(`form-delete-${id}`).submit()
             }
         })
         
     });
+
+    if (window.matchMedia('(max-width: 768px)').matches)
+    {
+        $("#logoImg").attr("src", "/assets/corp-assets/logo/Logo2.png").attr("width", "150%")
+    }
+    else {
+        $("#logoImg").attr("src", "/assets/corp-assets/logo/logo4.png").attr("width", "75%")
+    }
 
 </script>

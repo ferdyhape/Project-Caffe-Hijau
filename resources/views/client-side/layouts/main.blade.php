@@ -22,7 +22,7 @@
     @endif
 
     @include('client-side.layouts.script')
-
+    @include('sweetalert::alert')
 </body>
 
 </html>

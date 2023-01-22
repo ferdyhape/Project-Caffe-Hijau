@@ -5,16 +5,16 @@
 <div class="container row justify-content-center">
     <div class="col-lg-6 mt-2 mb-4">
         <div class="card border-0 shadow-sm">
-            <h5 class="card-header text-center text-uppercase">Edit Item <strong>[{{ $item->name }}]</strong></h5>
+            <h5 class="card-header text-center text-uppercase">Edit user <strong>[{{ $user->name }}]</strong></h5>
             <div class="card-body p-5">
-                <form action="{{ url('dashboard/item/'.$item->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('dashboard/user/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
-                    <img src="{{ asset('storage/'. $item->picture) }}" class="card-img-top mb-4" alt="item-image">
-                    <input type="hidden" name="oldPicture" value="{{ $item->picture }}"><br>
+                    <img src="{{ asset('storage/'. $user->picture) }}" class="card-img-top mb-4" alt="user-image">
+                    <input type="hidden" name="oldPicture" value="{{ $user->picture }}"><br>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror"
-                            name="name" placeholder="Item Name" value="{{ $item->name }}" required autofocus>
+                            name="name" placeholder="Name" value="{{ $user->name }}" required autofocus>
                         @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -22,9 +22,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-user @error('price') is-invalid @enderror"
-                            name="price" placeholder="Price" value="{{ $item->price }}" required>
-                        @error('price')
+                        <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror"
+                            name="email" placeholder="email" value="{{ $user->email }}" required>
+                        @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -33,31 +33,43 @@
                     <div class="form-group">
                         <input type="text"
                             class="form-control form-control-user @error('description') is-invalid @enderror"
-                            name="description" placeholder="Description" value="{{ $item->description }}">
+                            name="description" placeholder="Description" value="{{ $user->description }}">
                         @error('description')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                         @enderror
                     </div>
+                    @php
+                    $options = array("admin", "user");
+                    @endphp
                     <div class="form-group">
-                        <select class="form-control @error('category_id') is-invalid @enderror" id="category_id"
-                            name="category_id">
-                            @foreach($category as $c)
-                            @if( $item->category_id == $c->id)
-                            <option value="{{ $c->id }}" selected>{{ $c->name }}</option>
+                        <select class="form-control @error('level') is-invalid @enderror" id="level" name="level">
+                            @foreach ($options as $option)
+                            @if( $user->level == $option)
+                            <option value="{{ $option }}" selected>{{ $option }}</option>
                             @else
-                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                            <option value="{{ $option }}">{{ $option }}</option>
                             @endif
                             @endforeach
                         </select>
-                        @error('category_id')
+                        @error('level')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                         @enderror
                     </div>
-                    @if (is_null($item->picture))
+                    <div class="form-group">
+                        <input type="password"
+                            class="form-control form-control-user @error('password') is-invalid @enderror"
+                            name="password" required placeholder="Password" value="{{ $user->password }}">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    @if (is_null($user->picture))
                     <div class="input-group">
                         <label class="input-group-text" for="picture">Picture</label>
                         <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture"
@@ -74,8 +86,8 @@
                     <button type="button" class="btn btn-primary" onclick="editPicture()">Change Image</button>
 
                     <div class="input-group my-3">
-                        <input type="file" class="form-control" id="newpicture" name="picture" onchange="previewImage()"
-                            style="display: none">
+                        <input type="file" class="form-control" id="newpicture" name="picture"
+                            onchange="previewImageEdit()" style="display: none">
                     </div>
 
                     <div class="card-body" id="card-preview" style="display: none">
@@ -88,7 +100,7 @@
                     </div>
                     @endif
 
-                    <button type="submit" class="btn btn-primary btn-user btn-block mt-2">Edit Item</button>
+                    <button type="submit" class="btn btn-primary btn-user btn-block mt-2">Edit user</button>
                 </form>
             </div>
         </div>

@@ -26,16 +26,16 @@ class StoreitemRequest extends FormRequest
         return [
             'name' => 'required|max:20',
             'price' => 'required|integer',
-            'category_id' => 'required|integer',
             'description' => 'nullable|string|max:255',
-            'picture' => 'mimes:png,jpg,jpeg|max:2048',
+            'category_id' => 'required|integer|not_in:0',
+            'picture' => 'required|mimes:png,jpg,jpeg|max:2048',
         ];
     }
     public function messages()
     {
         return [
-            'name.max' => 'Name must be under :max character(Alphabet/Symbol/Space/Number)',
-            'category_id.integer' => 'You must choose a valid category',
+            'name.max' => 'Name must be under :max character',
+            'category_id.not_in' => 'You must choose a valid category',
         ];
     }
 }

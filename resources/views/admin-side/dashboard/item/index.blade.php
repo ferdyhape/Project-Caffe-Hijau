@@ -4,7 +4,8 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between py-3">
             <h6 class="m-0 font-weight-bold text-primary my-auto">Item List</h6>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add Item</button>
+            <button class="btn text-white bg-success" data-bs-toggle="modal" data-bs-target="#createModal">Add
+                Item</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -35,59 +36,32 @@
                             <td>{{ $i->item_category->name }}</td>
                             <td>{{ $i->description }}</td>
                             <td class="d-flex justify-content-around">
-                                <button class="badge bg-success border-0 text-white p-2 mx-2" data-bs-toggle="modal"
-                                    data-bs-target="#imageModal-{{$i->id}}"><i class="fas fa-fw fa-images"
-                                        style="font-size: 18px;"></i></button>
+                                <form action="item/{{ $i->id }}" id="form-delete-{{ $i->id }}" method="POST"
+                                    style="display: none">
+                                    @method('delete')
+                                    @csrf
+                                    <input type="submit" class="" value="Delete">
+                                </form>
+                                <button class="badge bg-success border-0 text-white p-2 mx-2 view-image"
+                                    data-image_path="{{$i->picture}}" data-name="{{ $i->name }}"><i
+                                        class="fas fa-fw fa-images" style="font-size: 18px;"></i></button>
                                 <button class="badge bg-warning border-0 text-white p-2 mx-2" data-bs-toggle="modal"
                                     data-bs-target="#editModal-{{$i->id}}"><i class="fas fa-fw fa-pencil"
                                         style="font-size: 18px;"></i></button>
                                 <button class="badge bg-danger border-0 p-2 mx-2 delete-confirm" data-id="{{$i->id}}"
                                     data-name="{{$i->name}}"><i class="fas fa-fw fa-trash text-white"
                                         style="font-size: 18px;"></i></button>
-                                <form action="item/{{ $i->id }}" id="form-delete" method="POST" style="display: none">
-                                    @method('delete')
-                                    @csrf
-                                    <input type="submit" class="" value="Delete">
-                                </form>
 
-                                <!-- Modal Image -->
-                                <div class="modal fade" id="imageModal-{{$i->id}}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Image of
-                                                    <strong>[{{$i->name }}]</strong>
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="text-center">
-                                                    @if (is_null($i->picture))
-                                                    <p>Image not included</p>
-                                                    @else
-                                                    <img src="{{ asset('storage/'. $i->picture) }}" alt="item-image"
-                                                        width="70%">
-                                                    @endif
 
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Modal Edit -->
                                 <div class="modal fade" id="editModal-{{$i->id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                        <div class="modal-content">
+                                        <div class="modal-content border-0 shadow">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Item
-                                                    <strong>[{{$i->name }}]</strong>
+                                                <h5 class="modal-title fw-bold" id="exampleModalLabel">
+                                                    Edit Item
+                                                    {{$i->name }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -172,22 +146,26 @@
                                                     <img class="img-preview-edit img-fluid mt-1" id="img-preview-edit">
 
                                                     @else
-                                                    <button type="button" class="btn btn-primary"
-                                                        onclick="editPicture()">Change Image</button>
+                                                    <div class="d-grid gap-2">
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="editPicture({{$i->id}})">Change Image</button>
+                                                    </div>
 
                                                     <div class="input-group my-3">
-                                                        <input type="file" class="form-control" id="newpicture"
-                                                            name="picture" onchange="previewImageEdit()"
+                                                        <input type="file" class="form-control"
+                                                            id="newpicture-{{$i->id}}" name="picture"
+                                                            onchange="previewImageEdit({{$i->id}})"
                                                             style="display: none">
                                                     </div>
 
-                                                    <div class="card-body" id="card-preview" style="display: none">
+                                                    <div class="card-body" id="card-preview-{{$i->id}}"
+                                                        style="display: none">
                                                         <div class="card-header p-0">
                                                             Preview new Image
                                                         </div>
                                                         <div class="card-body p-0">
-                                                            <img class="card-img-top img-preview-edit img-fluid mt-1"
-                                                                alt="new-image" id="img-preview-edit">
+                                                            <img class="card-img-top img-fluid mt-1" alt="new-image"
+                                                                id="img-preview-edit-{{$i->id}}">
                                                         </div>
                                                     </div>
                                                     @endif
@@ -210,11 +188,12 @@
                     </tbody>
                 </table>
 
+
                 <!-- Modal Create -->
                 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog ">
-                        <div class="modal-content">
+                        <div class="modal-content border-0 shadow">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"

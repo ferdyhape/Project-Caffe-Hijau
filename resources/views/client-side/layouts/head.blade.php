@@ -16,3 +16,4 @@
 <link rel="stylesheet" href="{{ URL::asset('assets/owl.theme.default.min.css'); }}">
 
 <title>{{ $title }}</title>
+@vite([])
