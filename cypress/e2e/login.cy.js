@@ -17,10 +17,9 @@ describe('login scenario', () => {
         cy.get('.custom-control-label').contains('Remember Me')
         cy.get('.btn-primary').contains('Login').should('not.be.disabled')
         cy.get('.btn-google').contains('Login with Google').should('not.be.disabled')
-        cy.get('.btn-facebook').contains('Login with Facebook').should('not.be.disabled')
-        cy.get('.p-5 > :nth-child(4) > .small').contains('Forgot Password?')
-        cy.get(':nth-child(5) > .small').contains('Create an Account!')
-        cy.get('.d-none').should('be.visible')
+        cy.get(':nth-child(1) > .small').contains('Forgot Password?')
+        cy.get(':nth-child(2) > .small').contains('Create an Account!')
+        cy.get('.bg-login-register').should('be.visible')
     })
 
     //TC-002
@@ -31,9 +30,9 @@ describe('login scenario', () => {
 
         cy.url().should('contain', '/')
         cy.get('.active > .nav-link').contains('Home')
-        cy.get('.navbar-nav > :nth-child(2) > .nav-link').contains('Our Products')
-        cy.get(':nth-child(3) > .nav-link').contains('About Us')
-        cy.get(':nth-child(4) > .nav-link').contains('Contact Us')
+        cy.get('.navbar-nav > :nth-child(2) > .nav-link').contains('Products')
+        cy.get(':nth-child(3) > .nav-link').contains('About')
+        cy.get(':nth-child(4) > .nav-link').contains('Contact')
         cy.get('.border-0 > .nav-link').contains('Logout')
         cy.get('.latest-products > .container > .row > .col-md-12 > .section-heading > h2').contains('Latest Products')
         cy.get('.best-features > .container > .row > .col-md-12 > .section-heading > h2').contains('About Brownies Santri')
@@ -44,7 +43,7 @@ describe('login scenario', () => {
         cy.get(':nth-child(2) > .form-control').type('suyatno@gmail.com')
         cy.get(':nth-child(3) > .form-control').type('password1')
         cy.get('.btn-primary').contains('Login').click()
-        cy.get('.alert').contains('Login Failed')
+        cy.get('.swal2-popup').contains('Login Failed')
     })
 
     //TC-004
@@ -52,7 +51,7 @@ describe('login scenario', () => {
         cy.get(':nth-child(2) > .form-control').type('suyatno1@gmail.com')
         cy.get(':nth-child(3) > .form-control').type('password')
         cy.get('.btn-primary').contains('Login').click()
-        cy.get('.alert').contains('Login Failed')
+        cy.get('.swal2-popup').contains('Login Failed')
     })
 
     //TC-005
@@ -60,7 +59,7 @@ describe('login scenario', () => {
         cy.get(':nth-child(2) > .form-control').type('suyatno1@gmail.com')
         cy.get(':nth-child(3) > .form-control').type('password1')
         cy.get('.btn-primary').contains('Login').click()
-        cy.get('.alert').contains('Login Failed')
+        cy.get('.swal2-popup').contains('Login Failed')
     })
 
     //TC-006
@@ -71,9 +70,9 @@ describe('login scenario', () => {
 
         cy.url().should('contain', '/')
         cy.get('.active > .nav-link').contains('Home')
-        cy.get('.navbar-nav > :nth-child(2) > .nav-link').contains('Our Products')
-        cy.get(':nth-child(3) > .nav-link').contains('About Us')
-        cy.get(':nth-child(4) > .nav-link').contains('Contact Us')
+        cy.get('.navbar-nav > :nth-child(2) > .nav-link').contains('Products')
+        cy.get(':nth-child(3) > .nav-link').contains('About')
+        cy.get(':nth-child(4) > .nav-link').contains('Contact')
         cy.get('#navbarDropdown').contains('Ferdy Hahan Pradana')
         cy.get('.latest-products > .container > .row > .col-md-12 > .section-heading > h2').contains('Latest Products')
         cy.get('.best-features > .container > .row > .col-md-12 > .section-heading > h2').contains('About Brownies Santri')
