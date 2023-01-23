@@ -83,17 +83,18 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email:dns,rfc|unique:users',
+            'picture' => 'nullable|mimes:png,jpg,jpeg|max:2048',
             'password' => [
                 'required',
                 'confirmed',
                 Password::min(6)
-                    ->letters()
+                    // ->letters()
                     ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised()
+                // ->numbers()
+                // ->symbols()
+                // ->uncompromised()
             ],
         ]);
 
@@ -102,8 +103,8 @@ class AuthController extends Controller
         User::create($validatedData);
         // dd($validatedData);
 
-        $request->session()->with('success', 'Registration is successful, please login');
+        // $request->session()->with('success', 'Registration is successful, please login');
 
-        return redirect('/login');
+        return redirect('/login')->with('toast_success', 'Registration is successful, Please login!');
     }
 }

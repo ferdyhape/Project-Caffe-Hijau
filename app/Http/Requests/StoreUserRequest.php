@@ -33,7 +33,7 @@ class StoreUserRequest extends FormRequest
                 'required',
                 'confirmed',
                 Password::min(6)
-                    ->letters()
+                    // ->letters()
                     ->mixedCase()
                 // ->numbers()
                 // ->symbols()

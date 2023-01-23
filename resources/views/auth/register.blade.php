@@ -42,7 +42,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password"
-                                            class="form-control form-control-user @error('password') is-invalid @enderror"
+                                            class="show-pw form-control form-control-user @error('password') is-invalid @enderror "
                                             name="password" required placeholder="Password">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -52,9 +52,16 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password"
-                                            class="form-control form-control-user @error('password') is-invalid @enderror"
+                                            class="show-pw form-control form-control-user @error('password') is-invalid @enderror "
                                             name="password_confirmation" required placeholder="Repeat Password">
                                     </div>
+                                </div>
+                                <div class="form-check ms-2 my-3">
+                                    <input class="form-check-input" type="checkbox" id="showPassword"
+                                        onclick="checkPassword();" />
+                                    <label class="form-check-label" for="showPassword">
+                                        Show Password
+                                    </label>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-user btn-block">Register
                                     Account</button>
@@ -76,6 +83,21 @@
         </div>
 
     </div>
-
+    <script>
+        function checkPassword(){
+            var pass = document.querySelectorAll('.show-pw')
+            {
+                if (document.getElementById('showPassword').checked){ 
+                    pass.forEach(element => {
+                    element.type = 'text';
+                    });
+                } else {
+                    pass.forEach(element => {
+                    element.type = 'password';
+                    });
+                }
+            }
+        }
+    </script>
 </body>
 @endsection
