@@ -1,7 +1,7 @@
 @extends('admin-side.dashboard.layouts.main')
 @section('content')
 
-<body class="bg-gradient-primary">
+<body class="bg-auth">
 
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -15,7 +15,7 @@
                     <div class="col-lg-7">
                         <div class="col row px-4 py-5 mx-auto">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Register Page</h1>
                             </div>
                             <form class="user" method="POST" action="/register">
                                 @csrf

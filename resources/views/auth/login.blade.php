@@ -1,15 +1,13 @@
 @extends('admin-side.dashboard.layouts.main')
 @section('content')
 
-<body class="bg-gradient-primary">
+<body class="bg-auth">
 
     <div class="container">
         <div class="container my-5">
-
             <!-- Outer Row -->
             <div class="row justify-content-center">
                 <div class="col-xl-10 col-lg-12 col-md-9 p-0">
-
                     <div class="card o-hidden border-0 shadow-lg">
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
@@ -19,7 +17,7 @@
                                 <div class="col-lg-6">
                                     <div class="col row px-3 py-5 mx-auto">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
                                         </div>
                                         <form method="POST" action="/login" class="user">
                                             @csrf

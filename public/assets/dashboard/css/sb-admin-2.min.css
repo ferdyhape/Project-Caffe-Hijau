@@ -12108,8 +12108,8 @@ a:focus {
 }
 
 
-.bg-password-image {
-    background: url("{{ asset('assets/corp-assets/illustration/login.jpg') }}");
+.bg-auth {
+    background: url("/assets/corp-assets/background/bg-login-register.jpg");
     background-position: center;
     background-size: cover
 }
