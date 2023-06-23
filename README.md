@@ -1,4 +1,4 @@
 # Caffe Coklat | Laravel Online Shop
-This application is still in progress <br>
+This application is done
 
-![](https://geps.dev/progress/50)
+![](https://geps.dev/progress/100)
