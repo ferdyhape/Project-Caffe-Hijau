@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="inner-content">
-                    <p>Copyright &copy; 2023 Brownies Santri
+                    <p>Copyright &copy; 2023 Cafe Hijau
                     </p>
                 </div>
             </div>

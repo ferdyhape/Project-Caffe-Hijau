@@ -16,16 +16,17 @@ class ItemCategorySeeder extends Seeder
     public function run()
     {
         item_category::create([
-            'name' => 'Original',
-            'description' => 'Commodo proident et elit nulla ut ea.'
-        ]);
-        item_category::create([
-            'name' => 'Request',
-            'description' => 'Dolor fugiat voluptate consequat veniam anim sunt deserunt velit velit.'
-        ]);
-        item_category::create([
             'name' => 'Large',
-            'description' => 'Sint ullamco nisi velit veniam sunt sint consequat cupidatat.'
+            // make description for large size
+            'description' => 'Large size is the biggest size of the item'
+        ]);
+        item_category::create([
+            'name' => 'Medium',
+            'description' => 'Medium size is the middle size of the item'
+        ]);
+        item_category::create([
+            'name' => 'Small',
+            'description' => 'Small size is the smallest size of the item'
         ]);
     }
 }
